@@ -18,8 +18,8 @@ services:
     environment:
       NODE_ENV: production
     volumes:
-      - ./files:/firefish/files
-      - ./.config:/firefish/.config:ro
+      - ${APP_DATA_DIR}/files:/firefish/files
+      - ${APP_DATA_DIR}/.config:/firefish/.config:ro
 
   redis:
     restart: unless-stopped
@@ -28,7 +28,7 @@ services:
     networks:
       - calcnet
     volumes:
-      - ./redis:/data
+      - ${APP_DATA_DIR}/redis:/data
 
   db:
     restart: unless-stopped
@@ -37,9 +37,9 @@ services:
     networks:
       - calcnet
     env_file:
-      - .config/docker.env
+      - ${APP_DATA_DIR}/.config/docker.env
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
 
 networks:
   calcnet:
