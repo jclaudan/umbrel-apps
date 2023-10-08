@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: firefish_firefish_1
+      APP_PORT: 3000
+
+  firefish:
+    image: registry.joinfirefish.org/firefish/firefish
+    container_name: firefish_web
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    networks:
+      - calcnet
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./files:/firefish/files
+      - ./.config:/firefish/.config:ro
+
+  redis:
+    restart: unless-stopped
+    image: docker.io/redis:7.0-alpine
+    container_name: firefish_redis
+    networks:
+      - calcnet
+    volumes:
+      - ./redis:/data
+
+  db:
+    restart: unless-stopped
+    image: docker.io/postgres:12.2-alpine
+    container_name: firefish_db
+    networks:
+      - calcnet
+    env_file:
+      - .config/docker.env
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+networks:
+  calcnet:

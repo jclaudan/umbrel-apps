@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: firefish
+name: Firefish
+tagline: Decentralized social media platform that's free forever!
+icon: https://raw.githubusercontent.com/jclaudan/firefish/main/title.svg
+category: Social Media
+version: "1.0.0"
+port: 3000
+description: >-
+  Firefish is based on Misskey, offering powerful microblogging on ActivityPub with enriched features.
+  It brings enhanced UI/UX, post editing, content importing, improved notifications, and many other advancements.
+  Join the decentralized and open-source revolution with Firefish!
+
+developer: Firefish Community
+website: https://joinfirefish.org
+submitter: Firefish Community
+submission: https://git.joinfirefish.org/firefish/firefish.git
+repo: https://git.joinfirefish.org/firefish/firefish.git
+support: https://matrix.to/#/#firefish:matrix.fedibird.com
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg # Please replace these with actual Firefish images/screenshots.
+  - https://i.imgur.com/yyVG0Jb.jpeg
+  - https://i.imgur.com/yyVG0Jb.jpeg
+releaseNotes: >-
+  Initial release with improved UI/UX, post editing, enhanced security, and much more.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
