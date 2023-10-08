@@ -13,8 +13,8 @@ services:
     depends_on:
       - db
       - redis
-    networks:
-      - calcnet
+    # networks:
+    #   - calcnet
     environment:
       NODE_ENV: production
     volumes:
@@ -25,8 +25,8 @@ services:
     restart: unless-stopped
     image: docker.io/redis:7.0-alpine
     container_name: firefish_redis
-    networks:
-      - calcnet
+    # networks:
+    #   - calcnet
     volumes:
       - ${APP_DATA_DIR}/redis:/data
 
@@ -34,12 +34,12 @@ services:
     restart: unless-stopped
     image: docker.io/postgres:12.2-alpine
     container_name: firefish_db
-    networks:
-      - calcnet
+    # networks:
+    #   - calcnet
     env_file:
       - ${APP_DATA_DIR}/.config/docker.env
     volumes:
       - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
 
-networks:
-  calcnet:
+# networks:
+#   calcnet:
