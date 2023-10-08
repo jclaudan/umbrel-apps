@@ -7,7 +7,7 @@ services:
       APP_PORT: 3000
 
   firefish:
-    image: registry.joinfirefish.org/firefish/firefish
+    image: registry.joinfirefish.org/firefish/firefish:v1.0.3
     container_name: firefish_web
     restart: unless-stopped
     depends_on:
