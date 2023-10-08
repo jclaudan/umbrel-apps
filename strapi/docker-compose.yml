@@ -18,7 +18,7 @@ services:
   strapi:
     build:
       context: .
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile
       args:
         BASE_VERSION: ${BASE_VERSION}
         STRAPI_VERSION: ${STRAPI_VERSION}

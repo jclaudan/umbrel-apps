@@ -1,4 +1,4 @@
-ARG NODE_VERSION=14-stretch
+ARG NODE_VERSION=18
 
 FROM node:${NODE_VERSION} AS base
 
@@ -7,7 +7,7 @@ EXPOSE 1337
 FROM base AS strapi
 
 
-ARG STRAPI_VERSION
+ARG STRAPI_VERSION=4.14.3
 RUN yarn global add @strapi/strapi@${STRAPI_VERSION}
 RUN yarn global add pm2
 
