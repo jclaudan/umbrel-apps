@@ -1,6 +1,11 @@
 version: "3.7"
 
 services:
+  app_proxy:
+    environment:
+      APP_HOST: firefish_web_1
+      APP_PORT: 3000
+      PROXY_AUTH_WHITELIST: "/*"
   web:
     image: registry.joinfirefish.org/firefish/firefish:v1.0.3
     container_name: web
@@ -11,8 +16,8 @@ services:
     # - sonic
     ports:
       - "3000:3000"
-    networks:
-      - calcnet
+    # networks:
+     # - calcnet
     environment:
       NODE_ENV: production
     volumes:
@@ -23,8 +28,8 @@ services:
     restart: unless-stopped
     image: docker.io/redis:7.0-alpine
     container_name: redis
-    networks:
-      - calcnet
+    # networks:
+     # - calcnet
     volumes:
       - ${APP_DATA_DIR}/redis:/data
 
@@ -32,8 +37,8 @@ services:
     restart: unless-stopped
     image: docker.io/postgres:12.2-alpine
     container_name: db
-    networks:
-      - calcnet
+  #  networks:
+   #   - calcnet
     env_file:
       - ${APP_DATA_DIR}/.config/docker.env
     volumes:
@@ -51,5 +56,5 @@ services:
 #      - ${APP_DATA_DIR}/sonic:/var/lib/sonic/store
 #      - ${APP_DATA_DIR}/sonic/config.cfg:/etc/sonic.cfg
 
-networks:
-  calcnet:
+#networks:
+ # calcnet:
