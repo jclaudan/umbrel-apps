@@ -5,7 +5,7 @@ tagline: Backend platform for Web, Mobile, and Flutter applications.
 icon: https://appwrite.io/images/logos/appwrite.svg
 category: Development
 version: "1.4.5"
-port: https://appwrite.io/images/logos/appwrite.svg
+port: 80
 description: >-
   Appwrite is an end-to-end backend server for Web, Mobile, Native, or Backend apps packaged as a set of Docker microservices. 
   Appwrite abstracts the complexity and repetitiveness required to build a modern backend API from scratch, allowing developers to build secure apps faster. 
@@ -21,8 +21,7 @@ gallery:
   - https://appwrite.io/images/logos/appwrite.svg
 releaseNotes: >-
   <Latest release notes or a description of updates in the version>
-dependencies: 
-  - Docker
+dependencies: []
 path: ""
 defaultUsername: ""
 defaultPassword: ""
