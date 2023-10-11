@@ -14,7 +14,7 @@ services:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
-      DATABASE_SSL: false # boolean for SSL.
+      DATABASE_SSL: "false" # boolean for SSL.
     volumes:
       - app:/srv/app # create a new project in app volume
   postgres:
