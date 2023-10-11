@@ -19,7 +19,7 @@ services:
       - ${APP_DATA_DIR}/app:/srv/app # create a new project in app volume
   postgres-strapi:
     restart: always
-    image: postgres
+    image: postgres:15
     container_name: postgres-strapi
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
