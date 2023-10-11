@@ -16,7 +16,7 @@ services:
       NODE_ENV: ${NODE_ENV}
       DATABASE_SSL: "false" # boolean for SSL.
     volumes:
-      - app:/srv/app # create a new project in app volume
+      - ${APP_DATA_DIR}/app:/srv/app # create a new project in app volume
   postgres-strapi:
     restart: always
     image: postgres
@@ -28,7 +28,7 @@ services:
     expose:
       - 5432
     volumes:
-      - data:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/data_db:/var/lib/postgresql/data
 
 volumes:
   data:
