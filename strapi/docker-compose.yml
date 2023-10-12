@@ -8,7 +8,6 @@ services:
       - '1337:1337'
     env_file: .env
     environment:
-      STRAPI_ADMIN_API_TOKEN: ${STRAPI_ADMIN_API_TOKEN}
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_HOST: ${DATABASE_HOST}
