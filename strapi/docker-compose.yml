@@ -6,7 +6,7 @@ services:
     container_name: strapi-v4
     ports:
       - '1337:1337'
-    env_file: ${APP_DATA_DIR}/.env
+    env_file: .env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_NAME: ${DATABASE_NAME}
@@ -28,7 +28,7 @@ services:
     restart: always
     image: postgres:15
     container_name: postgres-strapi
-    env_file: ${APP_DATA_DIR}/.env
+    env_file: .env
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
