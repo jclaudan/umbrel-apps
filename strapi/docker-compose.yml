@@ -29,6 +29,7 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       APP_KEYS: ${APP_KEYS}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: ${NODE_ENV}
       DATABASE_SSL: "false" # boolean for SSL.
     volumes:
