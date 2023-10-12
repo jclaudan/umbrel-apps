@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   strapi-v4:
     image: naskio/strapi
@@ -6,6 +6,7 @@ services:
     container_name: strapi-v4
     ports:
       - '1337:1337'
+    env_file: ${APP_DATA_DIR}/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_NAME: ${DATABASE_NAME}
@@ -21,10 +22,13 @@ services:
       DATABASE_SSL: "false" # boolean for SSL.
     volumes:
       - ${APP_DATA_DIR}/app:/srv/app # create a new project in app volume
+    depends_on:
+      - postgres-strapi
   postgres-strapi:
     restart: always
     image: postgres:15
     container_name: postgres-strapi
+    env_file: ${APP_DATA_DIR}/.env
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
