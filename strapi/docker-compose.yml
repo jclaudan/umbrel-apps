@@ -39,7 +39,7 @@ services:
       NODE_ENV: ${NODE_ENV}
       DATABASE_SSL: "false" # boolean for SSL.
     volumes:
-      - ${APP_DATA_DIR}/app:/srv/app # create a new project in app volume
+      - ${UMBREL_ROOT}/data/storage/strapi/app:/srv/app # create a new project in app volume
     depends_on:
       - postgres-strapi
   postgres-strapi:
@@ -54,7 +54,7 @@ services:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - ${APP_DATA_DIR}/data_db:/var/lib/postgresql/data
+      - ${UMBREL_ROOT}/data/storage/strapi/data_db:/var/lib/postgresql/data
 
 volumes:
   data:
