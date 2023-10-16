@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: medusa
+name: Medusa
+tagline: Building blocks for digital commerce
+icon: https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg
+category: E-commerce
+version: "1.17.1"
+port: 9000 # À remplacer par le port par défaut de Medusa
+description: >-
+  Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
+developer: Medusa Community
+website: https://www.medusajs.com
+submitter: Medusa Community
+submission: https://github.com/medusajs/medusa.git
+repo: https://github.com/medusajs/medusa.git
+support: https://github.com/medusajs/medusa/issues
+gallery:
+  - https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg # Remplacez par des captures d'écran réelles de Medusa
+  - https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg
+  - https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg
+releaseNotes: >-
+  Initial release with core commerce modules, customizable tools, and open-source availability.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
