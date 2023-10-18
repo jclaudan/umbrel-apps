@@ -33,7 +33,7 @@ services:
     env_file:
       - ${UMBREL_ROOT}/data/storage/medusa/.env
     ports:
-      - "9000:9000"
+      - "9001:9000"
     volumes:
       - ${UMBREL_ROOT}/data/storage/medusa/medusa_data:/app/medusa
       - ${UMBREL_ROOT}/data/storage/medusa/node_modules:/app/medusa/node_modules
