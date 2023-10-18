@@ -1,13 +1,19 @@
 version: "3.8"
 
 services:
+  app_proxy:
+    environment:
+      APP_HOST: traefik_1
+      APP_PORT: 443
+      PROXY_AUTH_ADD: "false"
+
   backend:
-    image: ${CONTAINER_RELEASE_IMAGE}
+    # image: ${CONTAINER_RELEASE_IMAGE}
     # Uncomment if you want to build the image on the server itself
-    # build:
-    #   context: backend/
-    #   dockerfile: Dockerfile
-    # image: medusa-starter-default:1.0.0
+    build:
+      context: backend/
+      dockerfile: Dockerfile
+    image: medusa-starter-default:1.0.0
     hostname: "`${MEDUSA_DOMAIN}`"
     container_name: medusa-server-default
     depends_on:
@@ -25,12 +31,12 @@ services:
       NODE_ENV: development
       PORT: 9000
     env_file:
-      - .env
+      - ${UMBREL_ROOT}/data/storage/medusa/.env
     ports:
       - "9000:9000"
     volumes:
-      - medusa_data:/app/medusa
-      - node_modules:/app/medusa/node_modules
+      - ${UMBREL_ROOT}/data/storage/medusa/medusa_data:/app/medusa
+      - ${UMBREL_ROOT}/data/storage/medusa/node_modules:/app/medusa/node_modules
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://0.0.0.0:9000/app || exit 1
       interval: 60s
@@ -59,7 +65,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: medusa-store
     volumes:
-      - db:/var/lib/postgresql/data
+      - ${UMBREL_ROOT}/data/storage/medusa/db:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       interval: 10s
@@ -132,8 +138,8 @@ services:
       - traefik.http.middlewares.to-https.redirectscheme.scheme=https
       - traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_PASSWORD_HASH}
     volumes:
-      - ./data/letsencrypt:/letsencrypt
-      - ./data/logs:/var/log/traefik
+      - ${UMBREL_ROOT}/data/storage/medusa/data/letsencrypt:/letsencrypt
+      - ${UMBREL_ROOT}/data/storage/medusa/data/logs:/var/log/traefik
       - /var/run/docker.sock:/var/run/docker.sock:ro
   storage:
     image: minio/minio:latest
@@ -146,7 +152,7 @@ services:
       timeout: 20s
       retries: 3
     volumes:
-      - ./data/storage:/data
+      - ${UMBREL_ROOT}/data/storage/medusa/data/storage:/data
     networks:
       - traefik
     environment:
@@ -176,7 +182,7 @@ services:
       - MEILI_NO_SENTRY=true
       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
     volumes:
-      - meilisearch_data:/data.ms
+      - ${UMBREL_ROOT}/data/storage/medusa/meilisearch_data:/data.ms
     networks:
       - traefik
     labels:
