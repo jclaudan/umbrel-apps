@@ -19,7 +19,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      redis:
+      medusaredis:
         condition: service_started
       storage:
         condition: service_started
@@ -27,7 +27,7 @@ services:
         condition: service_started
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/medusa-store
-      REDIS_URL: redis://redis
+      REDIS_URL: redis://medusaredis
       NODE_ENV: development
       PORT: 9000
     env_file:
@@ -71,10 +71,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  redis:
+  medusaredis:
     image: redis:7.0.7-alpine
     restart: always
-    container_name: redis
+    container_name: medusaredis
     expose:
       - 6379
     networks:
