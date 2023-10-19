@@ -36,7 +36,7 @@ services:
       - "9001:9000"
     volumes:
       - ${UMBREL_ROOT}/data/storage/medusa/medusa_data:/app/medusa
-      - ${UMBREL_ROOT}/data/storage/medusa/node_modules:/app/medusa/node_modules
+      - ${UMBREL_ROOT}/data/storage/medusa/backend/node_modules:/app/medusa/node_modules
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://0.0.0.0:9000/app || exit 1
       interval: 60s
