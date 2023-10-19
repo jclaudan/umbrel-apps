@@ -11,7 +11,7 @@ services:
     # image: ${CONTAINER_RELEASE_IMAGE}
     # Uncomment if you want to build the image on the server itself
     build:
-      context: ${APP_DATA_DIR}/backend/
+      context: ${UMBREL_ROOT}/data/storage/medusa/backend/
       dockerfile: Dockerfile
     image: medusa-starter-default:1.0.0
     hostname: "`${MEDUSA_DOMAIN}`"
