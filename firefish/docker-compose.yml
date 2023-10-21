@@ -55,7 +55,7 @@ services:
       - ${APP_DATA_DIR}/sonic/config.cfg:/etc/sonic.cfg
 
   protonmail-bridge:
-    image: ghcr.io/wormi4ok/protonmail-bridge:latest
+    image: ghcr.io/jclaudan/protonmail-bridge:latest
     restart: unless-stopped
     stdin_open: true
     tty: true
