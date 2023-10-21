@@ -43,17 +43,27 @@ services:
     volumes:
       - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
 
+  sonic:
+    restart: unless-stopped
+    image: docker.io/valeriansaliou/sonic:v1.4.0
+    logging:
+      driver: none
+    #  networks:
+    #    - calcnet
+    volumes:
+      - ${APP_DATA_DIR}/sonic:/var/lib/sonic/store
+      - ${APP_DATA_DIR}/sonic/config.cfg:/etc/sonic.cfg
 
-#  sonic:
-#    restart: unless-stopped
-#    image: docker.io/valeriansaliou/sonic:v1.4.0
-#    logging:
-#     driver: none
-#    networks:
-#      - calcnet
-#    volumes:
-#      - ${APP_DATA_DIR}/sonic:/var/lib/sonic/store
-#      - ${APP_DATA_DIR}/sonic/config.cfg:/etc/sonic.cfg
+  protonmail-bridge:
+    image: ghcr.io/wormi4ok/protonmail-bridge:latest
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 1143:143/tcp
+      - 1025:25/tcp
+    volumes:
+      - ${APP_DATA_DIR}/protonmail:/root
 
 #networks:
  # calcnet:
