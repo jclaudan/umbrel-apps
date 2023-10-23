@@ -1,0 +1,22 @@
+manifestVersion: 1
+id: open-event-frontend
+name: Open Event Frontend
+tagline: Frontend for the Open Event Server
+icon: https://raw.githubusercontent.com/fossasia/open-event-frontend/development/docs/images/Frontend_Branding.png
+category: Event Management
+version: latest
+port: 4200 
+description: >
+  The frontend for the Open Event Server, providing a user interface for event management and consumption.
+developer: FOSSASIA Community
+website: https://eventyay.com
+submitter: FOSSASIA Community
+submission: https://github.com/fossasia/open-event-frontend
+repo: https://github.com/fossasia/open-event-frontend
+support: https://github.com/fossasia/open-event-frontend/issues
+gallery: []
+releaseNotes: Latest release with enhanced features and improvements.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

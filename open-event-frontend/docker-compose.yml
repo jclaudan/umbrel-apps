@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  web:
+    image: eventyay/open-event-frontend
+    container_name: opev-frontend
+    restart: always
+    environment:
+      INJECT_ENV: 'true'
+      FASTBOOT_DISABLED: 'true'
+    volumes:
+      - ${APP_DATA_DIR}/config:/app/config
+    ports:
+      - 4200:4000
