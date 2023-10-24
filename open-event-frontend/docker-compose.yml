@@ -5,6 +5,8 @@ services:
     image: eventyay/open-event-frontend
     container_name: opev-frontend
     restart: always
+    env_file:
+      - ${UMBREL_ROOT}/data/storage/open-event-frontend/.env
     environment:
       INJECT_ENV: 'true'
       FASTBOOT_DISABLED: 'true'
