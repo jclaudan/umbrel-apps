@@ -1,10 +1,10 @@
 version: '3.7'
 
 services:
-  app_proxy:
-    environment:
-      APP_HOST: opev-web
-      APP_PORT: 8080
+  # app_proxy:
+  #   environment:
+  #     APP_HOST: opev-web
+  #     APP_PORT: 8080
 
   postgres:
     image: postgis/postgis:12-3.0-alpine
@@ -41,6 +41,8 @@ services:
       REDIS_URL: redis://opev-redis-container:6379/0
       ADMIN_EMAIL: "@{ADMIN_EMAIL}"
       ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
+    ports:
+      - 8080:8080
     depends_on:
       - postgres
       - opev-redis
