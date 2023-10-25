@@ -37,7 +37,7 @@ services:
       - ${UMBREL_ROOT}/data/storage/open-event-server/.env
     environment:
       POSTGRES_HOST: postgres
-      DATABASE_URL: postgresql://open_event_user:opev_pass@postgres:5432/open_event
+      DATABASE_URL: ${DATABASE_URL}
       REDIS_URL: redis://opev-redis-container:6379/0
       ADMIN_EMAIL: "@{ADMIN_EMAIL}"
       ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
@@ -58,7 +58,7 @@ services:
       - ${UMBREL_ROOT}/data/storage/open-event-server/.env
     environment:
       POSTGRES_HOST: postgres
-      DATABASE_URL: postgresql://open_event_user:opev_pass@postgres:5432/open_event
+      DATABASE_URL: ${DATABASE_URL}
       REDIS_URL: redis://opev-redis-container:6379/0
       ADMIN_EMAIL: "@{ADMIN_EMAIL}"
       ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
