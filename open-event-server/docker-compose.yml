@@ -11,9 +11,9 @@ services:
     container_name: opev-postgres
     restart: always
     env_file:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+      - ${APP_DATA_DIR}/.env
     volumes:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/postgres:/var/lib/postgresql/data
+      - ${APP_DATA_DIR}/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${POSTGRES_PASSWORD}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
@@ -28,17 +28,17 @@ services:
     container_name: opev-redis-container
     restart: always
     env_file:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+      - ${APP_DATA_DIR}/.env
     command: redis-server
     volumes:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/redis:/var/lib/redis/data
+      - ${APP_DATA_DIR}/redis:/var/lib/redis/data
 
   web:
     image: eventyay/open-event-server:development
     container_name: opev-web
     restart: always
     env_file:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+      - ${APP_DATA_DIR}/.env
     environment:
       POSTGRES_HOST: ${POSTGRES_HOST}
       DATABASE_URL: ${DATABASE_URL}
@@ -57,15 +57,15 @@ services:
       - postgres
       - opev-redis
     volumes:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/static:/data/app/static
-      - ${UMBREL_ROOT}/data/storage/open-event-server/generated:/data/app/generated
+      - ${APP_DATA_DIR}/static:/data/app/static
+      - ${APP_DATA_DIR}/generated:/data/app/generated
 
   celery:
     image: eventyay/open-event-server:development
     container_name: opev-celery
     restart: always
     env_file:
-      - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+      - ${APP_DATA_DIR}/.env
     environment:
       POSTGRES_HOST: ${POSTGRES_HOST}
       DATABASE_URL: ${DATABASE_URL}
