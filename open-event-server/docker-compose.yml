@@ -14,6 +14,10 @@ services:
       - ${UMBREL_ROOT}/data/storage/open-event-server/.env
     volumes:
       - ${UMBREL_ROOT}/data/storage/open-event-server/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
+      POSTGRES_DB: ${POSTGRES_DB}
     # environment:
     #   POSTGRES_USER: ${POSTGRES_PASSWORD}
     #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
@@ -35,6 +39,12 @@ services:
     restart: always
     env_file:
       - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+    environment:
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     # environment:
     #   POSTGRES_HOST: postgres
     #   DATABASE_URL: ${DATABASE_URL}
@@ -56,6 +66,13 @@ services:
     restart: always
     env_file:
       - ${UMBREL_ROOT}/data/storage/open-event-server/.env
+    environment:
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      C_FORCE_ROOT: ${C_FORCE_ROOT}
     # environment:
     #   POSTGRES_HOST: postgres
     #   DATABASE_URL: ${DATABASE_URL}
