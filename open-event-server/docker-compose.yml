@@ -1,5 +1,26 @@
 version: '3.7'
 
+x-environment-vars: &environment-vars
+  POSTGRES_HOST: ${POSTGRES_HOST}
+  DATABASE_URL: ${DATABASE_URL}
+  REDIS_URL: ${REDIS_URL}
+  ADMIN_EMAIL: "@{ADMIN_EMAIL}"
+  ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
+
+x-defaults: &defaults
+  image: eventyay/open-event-server:development
+  restart: unless-stopped
+  env_file:
+    - ${APP_DATA_DIR}/.env
+  environment:
+    <<: *environment-vars
+  depends_on:
+    - postgres
+    - opev-redis
+  volumes:
+    - ${APP_DATA_DIR}/static:/data/app/static
+    - ${APP_DATA_DIR}/generated:/data/app/generated # Workaround for #6155
+
 services:
   # app_proxy:
   #   environment:
@@ -34,52 +55,17 @@ services:
       - ${APP_DATA_DIR}/redis:/var/lib/redis/data
 
   web:
-    image: eventyay/open-event-server:development
+    <<: *defaults
     container_name: opev-web
-    restart: always
-    env_file:
-      - ${APP_DATA_DIR}/.env
-    environment:
-      POSTGRES_HOST: ${POSTGRES_HOST}
-      DATABASE_URL: ${DATABASE_URL}
-      REDIS_URL: ${REDIS_URL}
-      ADMIN_EMAIL: ${ADMIN_EMAIL}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-    # environment:
-    #   POSTGRES_HOST: postgres
-    #   DATABASE_URL: ${DATABASE_URL}
-    #   REDIS_URL: redis://opev-redis-container:6379/0
-    #   ADMIN_EMAIL: ${ADMIN_EMAIL}
-    #   ADMIN_PASSWORD: ${ADMIN_PASSWORD}
     ports:
       - 8080:8080
-    depends_on:
-      - postgres
-      - opev-redis
-    volumes:
-      - ${APP_DATA_DIR}/static:/data/app/static
-      - ${APP_DATA_DIR}/generated:/data/app/generated
 
   celery:
-    image: eventyay/open-event-server:development
+    <<: *defaults
     container_name: opev-celery
-    restart: always
-    env_file:
-      - ${APP_DATA_DIR}/.env
     environment:
-      POSTGRES_HOST: ${POSTGRES_HOST}
-      DATABASE_URL: ${DATABASE_URL}
-      REDIS_URL: ${REDIS_URL}
-      ADMIN_EMAIL: ${ADMIN_EMAIL}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-      C_FORCE_ROOT: ${C_FORCE_ROOT}
-    # environment:
-    #   POSTGRES_HOST: postgres
-    #   DATABASE_URL: ${DATABASE_URL}
-    #   REDIS_URL: redis://opev-redis-container:6379/0
-    #   ADMIN_EMAIL: ${ADMIN_EMAIL}
-    #   ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-    #   C_FORCE_ROOT: "true"
+      <<: *environment-vars
+      C_FORCE_ROOT: "true"
     depends_on:
       - web
     command: celery
