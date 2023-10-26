@@ -1,9 +1,9 @@
 version: '3.7'
 
 x-environment-vars: &environment-vars
-  POSTGRES_HOST: "@{POSTGRES_HOST}"
-  DATABASE_URL: "@{DATABASE_URL}"
-  REDIS_URL: "@{REDIS_URL}"
+  POSTGRES_HOST: postgres
+  DATABASE_URL: postgresql://open_event_user:opev_pass@postgres:5432/open_event
+  REDIS_URL: redis://opev-redis-container:6379/0
   ADMIN_EMAIL: "@{ADMIN_EMAIL}"
   ADMIN_PASSWORD: "@{ADMIN_PASSWORD}"
 
@@ -36,13 +36,9 @@ services:
     volumes:
       - ${APP_DATA_DIR}/postgres:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: ${POSTGRES_PASSWORD}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
-      POSTGRES_DB: ${POSTGRES_DB}
-    # environment:
-    #   POSTGRES_USER: ${POSTGRES_PASSWORD}
-    #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
-    #   POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: open_event_user
+      POSTGRES_PASSWORD: opev_pass
+      POSTGRES_DB: open_event
 
   opev-redis:
     image: redis:3-alpine
