@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: webshell
+name: Web-Terminal
+tagline: Web-Terminal for testing purposes in Docker-Container.
+icon: [URL_OF_ICON]
+category: Development Tools
+version: [VERSION_OF_WEB_TERMINAL]
+port: 9022
+description: >-
+  Web-Terminal is designed for training courses so that participants can easily test the instructions, for example for git.
+  It's based on [butlerx/wetty](https://github.com/butlerx/wetty).
+  Easily accessible from a browser, it provides a terminal interface for various testing and training needs.
+
+developer: [DEVELOPER_NAME]
+website: [WEBSITE_URL]
+submitter: [SUBMITTER_NAME]
+submission: [SUBMISSION_URL]
+repo: [REPO_URL]
+support: [SUPPORT_URL]
+gallery:
+  - [SCREENSHOT_URL_1]
+  - [SCREENSHOT_URL_2]
+  - [SCREENSHOT_URL_3]
+releaseNotes: >-
+  [RELEASE_NOTES]
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
