@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: webshell-wetty
+id: webshell
 name: Web-Terminal Wetty
 tagline: "Access terminal sessions in your web browser for educational and testing purposes."
 icon: https://example.com/path/to/webshell-icon.png
