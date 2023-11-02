@@ -12,7 +12,7 @@ services:
       dockerfile: ${APP_DATA_DIR}/containers/wetty/Dockerfile
     entrypoint: pnpm run docker-compose-entrypoint
     tty: true
-    working_dir: ${APP_DATA_DIR}/usr/src/app
+    working_dir: /usr/src/app
     ports:
       - '3000'
     environment:
