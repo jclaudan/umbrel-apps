@@ -14,16 +14,20 @@ FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-FROM node:current-alpine
+FROM node:current-alpine AS final
 LABEL maintainer="butlerx@notthe.cloud"
 WORKDIR /usr/src/app
 ENV NODE_ENV=production
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 EXPOSE 3000
 COPY --from=prod-deps /usr/src/app/node_modules /usr/src/app/node_modules
 COPY --from=build /usr/src/app/build /usr/src/app/build
 COPY package.json /usr/src/app
 RUN apk add -U coreutils openssh-client sshpass && \
-    mkdir ~/.ssh
+    mkdir ~/.ssh && \
+    corepack enable && \
+    pnpm i -g pnpm@latest
 
 EXPOSE 8000
 CMD [ "pnpm", "start" ]
