@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: webshell
+    image: wettyoss/wetty
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    ports:
+      - 9022:80
+    command: --port 80 --ssh-host ssh
+
+  ssh:
+    container_name: docker-ssh
+    build: .
+    # image: registry.oidatiftla.de/docker-ssh-git
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
