@@ -1,20 +1,48 @@
-version: '3.7'
-
+---
+version: '3.5'
 services:
-  app:
-    container_name: webshell
+  app_proxy:
+    environment:
+      APP_HOST: webshell_web_1
+      APP_PORT: 80
+  wetty:
     image: wettyoss/wetty
-    volumes:
-      - ${APP_DATA_DIR}/etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
+    build:
+      context: ${APP_DATA_DIR}
+      dockerfile: ${APP_DATA_DIR}/containers/wetty/Dockerfile
+    entrypoint: pnpm run docker-compose-entrypoint
+    tty: true
+    working_dir: /usr/src/app
     ports:
-      - 9022:80
-    command: --port 80 --ssh-host ssh
+      - '3000'
+    environment:
+      SSHHOST: 'wetty-ssh'
+      SSHPORT: 22
+      NODE_ENV: 'development'
 
-  ssh:
-    container_name: docker-ssh
-    build: ${APP_DATA_DIR}/
-    # image: registry.oidatiftla.de/docker-ssh-git
+  web:
+    image: nginx
     volumes:
-      - ${APP_DATA_DIR}/etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
+      - ${APP_DATA_DIR}/conf/nginx.template:/etc/nginx/conf.d/wetty.template
+    ports:
+      - '80'
+    environment:
+      - NGINX_DOMAIN=wetty.com
+      - NGINX_PORT=80
+      - WETTY_HOST=wetty
+      - WETTY_PORT=3000
+    command: >-
+      /bin/bash -c "envsubst
+      '$${NGINX_DOMAIN},$${NGINX_PORT},$${WETTY_HOST},$${WETTY_PORT}' <
+      /etc/nginx/conf.d/wetty.template > /etc/nginx/conf.d/default.conf && nginx
+      -g 'daemon off;'"
+
+  wetty-ssh:
+    build:
+      context: .
+      dockerfile: ${APP_DATA_DIR}/containers/ssh/Dockerfile
+    image: wettyoss/wetty:ssh
+
+networks:
+  default:
+    name: wetty
