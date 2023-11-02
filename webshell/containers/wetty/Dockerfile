@@ -1,7 +1,7 @@
 FROM node:current-alpine as base
 RUN apk add -U build-base python3
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="$PNPM_HOME"
 RUN corepack enable
 RUN npx pnpm i -g pnpm@latest
 WORKDIR /usr/src/app
