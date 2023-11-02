@@ -18,7 +18,7 @@ services:
     environment:
       SSHHOST: 'wetty-ssh'
       SSHPORT: 22
-      NODE_ENV: 'production'
+      NODE_ENV: 'development'
 
   web:
     image: nginx
