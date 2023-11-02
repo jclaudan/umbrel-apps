@@ -5,7 +5,7 @@ services:
     container_name: webshell
     image: wettyoss/wetty
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - ${APP_DATA_DIR}/etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     ports:
       - 9022:80
@@ -13,8 +13,8 @@ services:
 
   ssh:
     container_name: docker-ssh
-    build: .
+    build: ${APP_DATA_DIR}/
     # image: registry.oidatiftla.de/docker-ssh-git
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - ${APP_DATA_DIR}/etc/localtime:/etc/localtime:ro
     restart: unless-stopped
