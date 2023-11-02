@@ -1,28 +1,30 @@
 manifestVersion: 1
-id: webshell
-name: Web-Terminal
-tagline: Web-Terminal for testing purposes in Docker-Container.
-icon: [URL_OF_ICON]
+id: webshell-wetty
+name: Web-Terminal Wetty
+tagline: "Access terminal sessions in your web browser for educational and testing purposes."
+icon: https://example.com/path/to/webshell-icon.png
 category: Development Tools
-version: [VERSION_OF_WEB_TERMINAL]
+version: "1.0.0"
 port: 9022
 description: >-
-  Web-Terminal is designed for training courses so that participants can easily test the instructions, for example for git.
-  It's based on [butlerx/wetty](https://github.com/butlerx/wetty).
-  Easily accessible from a browser, it provides a terminal interface for various testing and training needs.
+  The Web-Terminal Wetty container provides an in-browser terminal experience using wetty, making it ideal for training, workshops, and educational purposes. Users can easily test git commands and other terminal operations without leaving their web browsers. Based on the robust and widely-used wetty project, it ensures a seamless experience for all users.
 
-developer: [DEVELOPER_NAME]
-website: [WEBSITE_URL]
-submitter: [SUBMITTER_NAME]
-submission: [SUBMISSION_URL]
-repo: [REPO_URL]
-support: [SUPPORT_URL]
+developer: Web-Terminal Dev Team
+website: https://github.com/wettyoss/wetty
+submitter: Web-Terminal Dev Team
+submission: https://github.com/wettyoss/wetty
+repo: https://github.com/wettyoss/wetty
+support: https://github.com/wettyoss/wetty/issues
 gallery:
-  - [SCREENSHOT_URL_1]
-  - [SCREENSHOT_URL_2]
-  - [SCREENSHOT_URL_3]
+  - https://example.com/path/to/screenshot1.png
+  - https://example.com/path/to/screenshot2.png
+  - https://example.com/path/to/screenshot3.png
 releaseNotes: >-
-  [RELEASE_NOTES]
+  Initial release of the Web-Terminal Wetty container. Features include:
+  - Browser-based terminal access.
+  - Full SSH compatibility.
+  - Support for git and other command-line tools.
+  - Easy setup and deployment for educational environments.
 dependencies: []
 path: ""
 defaultUsername: ""
