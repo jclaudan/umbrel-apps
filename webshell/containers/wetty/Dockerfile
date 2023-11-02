@@ -1,61 +1,29 @@
-FROM node:18-alpine as base
-
-# Install build dependencies
-RUN apk add --no-cache build-base python3
-
-# Set up environment variables for PNPM_HOME and add it to the PATH
-ENV PNPM_HOME="/root/.pnpm"
-ENV PATH="$PNPM_HOME/bin:$PATH"
-
-# Enable Corepack
+FROM node:current-alpine as base
+RUN apk add -U build-base python3
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-
-# Install pnpm using npm
-RUN npm install -g pnpm@latest
-
-# Run pnpm setup to ensure the global bin directory is created and in the PATH
-RUN pnpm setup
-
-# Set the working directory for the container
+RUN npx pnpm i -g pnpm@latest
 WORKDIR /usr/src/app
+COPY . /usr/src/app
 
-# Copy the application files into the container
-COPY . .
-
-
-
-# Install production dependencies
 FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/root/.pnpm pnpm install --prod --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-# Build the application
 FROM base AS build
-RUN --mount=type=cache,id=pnpm,target=/root/.pnpm pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
-# Prepare the final image with just the runtime dependencies and built code
 FROM node:current-alpine
 LABEL maintainer="butlerx@notthe.cloud"
-
-# Set the working directory for the container
 WORKDIR /usr/src/app
-
-# Set the environment to production
 ENV NODE_ENV=production
+EXPOSE 3000
+COPY --from=prod-deps /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --from=build /usr/src/app/build /usr/src/app/build
+COPY package.json /usr/src/app
+RUN apk add -U coreutils openssh-client sshpass && \
+    mkdir ~/.ssh
 
-# Copy the production node_modules and build directories from the intermediate stages
-COPY --from=prod-deps /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/build ./build
-
-# Copy package.json (and other necessary files like package-lock.json if present)
-COPY package.json ./
-
-# Install runtime dependencies
-RUN apk add --no-cache coreutils openssh-client sshpass && \
-    mkdir -p ~/.ssh
-
-# Expose the port that the application listens on
 EXPOSE 8000
-
-# Start the application
 CMD [ "pnpm", "start" ]
