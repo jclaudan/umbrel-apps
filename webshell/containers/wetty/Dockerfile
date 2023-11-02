@@ -3,18 +3,20 @@ FROM node:current-alpine as base
 # Install build dependencies
 RUN apk add --no-cache build-base python3
 
-# Set the PNPM_HOME environment variable and add it to the PATH
+# Set up environment variables for PNPM_HOME and add it to the PATH
 ENV PNPM_HOME="/root/.pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="$PNPM_HOME/bin:$PATH"
 
-# Enable Corepack and set up pnpm
-RUN corepack enable && pnpm setup
+# Enable Corepack and run pnpm setup
+RUN corepack enable \
+    && pnpm setup
 
 # Set the working directory for the container
 WORKDIR /usr/src/app
 
 # Copy the application files into the container
 COPY . .
+
 
 # Install production dependencies
 FROM base AS prod-deps
