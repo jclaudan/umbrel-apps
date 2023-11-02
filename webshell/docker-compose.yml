@@ -8,7 +8,7 @@ services:
   wetty:
     image: wettyoss/wetty
     build:
-      context: ${APP_DATA_DIR}/
+      context: ${APP_DATA_DIR}
       dockerfile: ${APP_DATA_DIR}/containers/wetty/Dockerfile
     entrypoint: pnpm run docker-compose-entrypoint
     tty: true
@@ -39,7 +39,7 @@ services:
 
   wetty-ssh:
     build:
-      context: ${APP_DATA_DIR}/
+      context: ${APP_DATA_DIR}
       dockerfile: ${APP_DATA_DIR}/containers/ssh/Dockerfile
     image: wettyoss/wetty:ssh
 
