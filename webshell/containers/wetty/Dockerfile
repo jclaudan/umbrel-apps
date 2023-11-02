@@ -1,59 +1,53 @@
-# Base stage for installing dependencies and building the app
 FROM node:current-alpine as base
 
-# Install build dependencies for native modules
+# Install build dependencies
 RUN apk add --no-cache build-base python3
 
-# Install pnpm
-RUN corepack enable && npx pnpm i -g pnpm@latest
-
-# Set environment variables for pnpm
-ENV PNPM_HOME="/pnpm"
+# Define environment variables for pnpm
+ENV PNPM_HOME="/root/.pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-# Copy application to container and install dependencies
+# Enable Corepack to manage package installations and install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Set the working directory for the container
 WORKDIR /usr/src/app
+
+# Copy the application files into the container
 COPY . .
 
-# Install production dependencies only
-FROM base as prod-deps
-RUN pnpm install --prod --frozen-lockfile
+# Install production dependencies
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/root/.pnpm pnpm install --prod --frozen-lockfile
 
 # Build the application
-FROM base as build
-RUN pnpm install --frozen-lockfile && pnpm run build
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/root/.pnpm pnpm install --frozen-lockfile
+RUN pnpm run build
 
-# Final stage with runtime dependencies and application
+# Prepare the final image with just the runtime dependencies and built code
 FROM node:current-alpine
-
-# Maintainer information
 LABEL maintainer="butlerx@notthe.cloud"
 
-# Set working directory for the application
+# Set the working directory for the container
 WORKDIR /usr/src/app
 
 # Set the environment to production
 ENV NODE_ENV=production
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
 
-# Copy over the production dependencies
+# Copy the production node_modules and build directories from the intermediate stages
 COPY --from=prod-deps /usr/src/app/node_modules ./node_modules
-
-# Copy over the built application
 COPY --from=build /usr/src/app/build ./build
 
-# Copy other necessary files like package.json
-COPY package.json .
+# Copy package.json (and other necessary files like package-lock.json if present)
+COPY package.json ./
 
-# Install runtime dependencies and tools, also install pnpm globally in the final image
+# Install runtime dependencies
 RUN apk add --no-cache coreutils openssh-client sshpass && \
-    mkdir ~/.ssh && \
-    corepack enable && \
-    npx pnpm i -g pnpm@latest
+    mkdir -p ~/.ssh
 
-# Expose the port your app runs on
+# Expose the port that the application listens on
 EXPOSE 8000
 
 # Start the application
-CMD ["pnpm", "start"]
+CMD [ "pnpm", "start" ]
