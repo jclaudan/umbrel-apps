@@ -3,12 +3,12 @@ FROM node:current-alpine as base
 # Install build dependencies
 RUN apk add --no-cache build-base python3
 
-# Set the PNPM_HOME environment variable to point to the global bin directory
+# Set the PNPM_HOME environment variable and add it to the PATH
 ENV PNPM_HOME="/root/.pnpm"
-ENV PATH="$PNPM_HOME/bin:$PATH"
+ENV PATH="$PNPM_HOME:$PATH"
 
-# Enable Corepack and install pnpm globally
-RUN corepack enable && corepack prepare pnpm@latest --activate && pnpm setup
+# Enable Corepack and set up pnpm
+RUN corepack enable && pnpm setup
 
 # Set the working directory for the container
 WORKDIR /usr/src/app
