@@ -2,7 +2,7 @@ version: '3'
 services:
   strapi:
     container_name: strapi
-    build: ${UMBREL_ROOT}/data/storage/strapi/
+    build: ${UMBREL_ROOT}/data/storage/strapi/Dockerfile
     image: strapi:latest
     restart: unless-stopped
     env_file: ${UMBREL_ROOT}/data/storage/strapi/.env
