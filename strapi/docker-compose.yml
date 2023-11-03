@@ -1,17 +1,17 @@
 version: '3.8'
 services:
-  # app_proxy:
-  #   environment:
-  #     APP_HOST: strapi-v4_1
-  #     APP_PORT: 1337
-  #     PROXY_AUTH_ADD: "false"
+  app_proxy:
+    environment:
+      APP_HOST: strapi-v4_1
+      APP_PORT: 1337
+      PROXY_AUTH_ADD: "false"
   strapi-v4:
     image: naskio/strapi
     restart: always
     container_name: strapi-v4
     ports:
       - '1337:1337'
-    env_file: ${APP_DATA_DIR}/.env
+    env_file: ${UMBREL_ROOT}/data/storage/strapi/app/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_NAME: ${DATABASE_NAME}
