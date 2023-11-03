@@ -1,62 +1,72 @@
-version: '3.8'
+version: '3'
 services:
-  # app_proxy:
-  #   environment:
-  #     APP_HOST: strapi-v4_1
-  #     APP_PORT: 1337
-  #     PROXY_AUTH_ADD: "false"
-  strapi-v4:
-    image: naskio/strapi
-    restart: always
-    container_name: strapi-v4
-    ports:
-      - '1337:1337'
-    env_file: ${APP_DATA_DIR}/.env
+  strapi:
+    container_name: strapi
+    build: ${UMBREL_ROOT}/data/storage/strapi/
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: ${UMBREL_ROOT}/data/storage/strapi/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: strapiDB
       DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      # STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
-      WEBHOOK_STRIPE_TOKEN: ${WEBHOOK_STRIPE_TOKEN}
-      SENDMAIL_DKIM_PRIVATE_KEY: ${SENDMAIL_DKIM_PRIVATE_KEY}
-      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
-      STRAPI_ADMIN_API_TOKEN: ${STRAPI_ADMIN_API_TOKEN}
-      STRAPI_ADMIN_LIVE_STRIPE_SECRET_KEY: ${STRAPI_ADMIN_LIVE_STRIPE_SECRET_KEY}
-      STRAPI_ADMIN_TEST_STRIPE_SECRET_KEY: ${STRAPI_ADMIN_TEST_STRIPE_SECRET_KEY}
-      STRAPI_ADMIN_PAYPAL_SANDBOX_API_URL: ${STRAPI_ADMIN_PAYPAL_SANDBOX_API_URL}
-      STRAPI_ADMIN_PAYPAL_LIVE_API_URL: ${STRAPI_ADMIN_PAYPAL_LIVE_API_URL}
-      STRAPI_ADMIN_LIVE_PAYPAL_CLIENT_ID: ${STRAPI_ADMIN_LIVE_PAYPAL_CLIENT_ID}
-      STRAPI_ADMIN_LIVE_PAYPAL_CLIENT_SECRET: ${STRAPI_ADMIN_LIVE_PAYPAL_CLIENT_SECRET}
-      STRAPI_ADMIN_SANDBOX_PAYPAL_CLIENT_ID: ${STRAPI_ADMIN_SANDBOX_PAYPAL_CLIENT_ID}
-      STRAPI_ADMIN_SANDBOX_PAYPAL_CLIENT_SECRET: ${STRAPI_ADMIN_SANDBOX_PAYPAL_CLIENT_SECRET}
-      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      API_TOKEN_SALT: ${API_TOKEN_SALT}
-      APP_KEYS: ${APP_KEYS}
+      DATABASE_PORT: ${DATABASE_PORT}
       JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
-      DATABASE_SSL: "false" # boolean for SSL.
     volumes:
-      - ${UMBREL_ROOT}/data/storage/strapi/app:/srv/app # create a new project in app volume
-    depends_on:
-      - postgres-strapi
-  postgres-strapi:
-    restart: always
-    image: postgres:15
-    container_name: postgres-strapi
+      - ${UMBREL_ROOT}/data/storage/strapi/config:/opt/app/config
+      - ${UMBREL_ROOT}/data/storage/strapi/src:/opt/app/src
+      - ${UMBREL_ROOT}/data/storage/strapi/package.json:/opt/package.json
+      - ${UMBREL_ROOT}/data/storage/strapi/yarn.lock:/opt/yarn.lock
+
+      - ${UMBREL_ROOT}/data/storage/strapi/.env:/opt/app/.env
+      - ${UMBREL_ROOT}/data/storage/strapi/public/uploads:/opt/app/public/uploads
     ports:
-      - ${DATABASE_PORT}
-    env_file: ${APP_DATA_DIR}/.env
+      - '1337:1337'
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
+
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: ${UMBREL_ROOT}/data/storage/strapi/.env
+    image: postgres:14.5-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
-      - ${UMBREL_ROOT}/data/storage/strapi/data_db:/var/lib/postgresql/data
+      - ${UMBREL_ROOT}/data/storage/strapi/data:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+
+    ports:
+      - '3306:3306'
+    networks:
+      - strapi
+
+  strapiAdminer:
+    container_name: strapiAdminer
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - '9090:8080'
+    environment:
+      - ADMINER_DEFAULT_SERVER=strapiDB
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
 
 volumes:
-  data:
-  app:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
