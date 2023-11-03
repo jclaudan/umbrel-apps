@@ -2,7 +2,7 @@ version: '3.8'
 services:
   app_proxy:
     environment:
-      APP_HOST: strapi_strapi-v4_1
+      APP_HOST: strapi-v4_1
       APP_PORT: 1337
       PROXY_AUTH_ADD: "false"
   strapi-v4:
