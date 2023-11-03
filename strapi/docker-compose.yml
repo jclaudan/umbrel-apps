@@ -10,7 +10,7 @@ services:
     restart: always
     container_name: strapi-v4
     ports:
-      - '1337:1337'
+      - '1337'
     env_file: ${APP_DATA_DIR}/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
