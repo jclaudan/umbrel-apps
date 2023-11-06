@@ -19,7 +19,7 @@ services:
       kasm-network:
         ipv4_address: 172.22.0.2
     volumes:
-      - ${UMBREL_ROOT}/kasm-user:/home/kasm-user
+      - ${UMBREL_ROOT}/kasm-user:/home/kasm-user/shared-data
 
 networks:
   kasm-network:
