@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: kasmweb-desktop_1
+      APP_PORT: 6901
+
+  kasmweb-desktop:
+    image: kasmweb/desktop:1.14.0
+    shm_size: 512m
+    environment:
+      - VNC_PW=password
+    ports:
+      - "6901"
+    stdin_open: true
+    tty: true
+   networks:
+      kasm-network:
+        ipv4_address: 192.168.48.2
+    volumes:
+      - ${UMBREL_ROOT}/kasm-user:/home/kasm-user
+
+networks:
+  kasm-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.48.0/24
