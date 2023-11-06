@@ -11,7 +11,8 @@ services:
     image: kasmweb/desktop:1.14.0
     shm_size: 512m
     environment:
-      - VNC_PW=password
+      - USER=root
+      - VNC_PW=${VNC_PW}
     ports:
       - "6901"
     stdin_open: true
