@@ -5,6 +5,7 @@ services:
     environment:
       APP_HOST: kasmweb-desktop_1
       APP_PORT: 6901
+      PROXY_TRUST_UPSTREAM: true
 
   kasmweb-desktop:
     image: kasmweb/desktop:1.14.0
