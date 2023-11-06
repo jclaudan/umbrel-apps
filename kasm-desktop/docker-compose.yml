@@ -14,7 +14,7 @@ services:
       - USER=root
       - VNC_PW=${VNC_PW}
     ports:
-      - "6901"
+      - "6901:6901"
     stdin_open: true
     tty: true
     networks:
