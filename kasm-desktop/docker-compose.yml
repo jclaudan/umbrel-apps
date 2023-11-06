@@ -11,8 +11,8 @@ services:
     image: kasmweb/desktop:1.14.0
     shm_size: 512m
     user: root
-    env_file:
-      - ${APP_DATA_DIR}/.env
+    # env_file:
+    #   - ${APP_DATA_DIR}/.env
     environment:
       - VNC_PW=password
     ports:
