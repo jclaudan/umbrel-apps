@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 services:
   # app_proxy:
@@ -10,6 +10,8 @@ services:
   kasmweb-desktop:
     image: kasmweb/desktop:1.14.0
     shm_size: 512m
+    env_file:
+      - ${APP_DATA_DIR}/.env
     environment:
       - USER=root
       - VNC_PW=${VNC_PW}
@@ -21,7 +23,7 @@ services:
       kasm-network:
         ipv4_address: 172.22.0.2
     volumes:
-      - ${UMBREL_ROOT}/kasm-user:/home/kasm-user/shared-data
+      - ${UMBREL_ROOT}/data/storage//kasm-user:/home/kasm-user/shared-data
 
 networks:
   kasm-network:
