@@ -15,7 +15,7 @@ services:
       - "6901"
     stdin_open: true
     tty: true
-   networks:
+    networks:
       kasm-network:
         ipv4_address: 192.168.48.2
     volumes:
