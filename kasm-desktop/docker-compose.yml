@@ -10,11 +10,11 @@ services:
   kasmweb-desktop:
     image: kasmweb/desktop:1.14.0
     shm_size: 512m
+    user: root
     env_file:
       - ${APP_DATA_DIR}/.env
     environment:
-      - USER=root
-      - VNC_PW=${VNC_PW}
+      - VNC_PW=password
     ports:
       - "6901:6901"
     stdin_open: true
