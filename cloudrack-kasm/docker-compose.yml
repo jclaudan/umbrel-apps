@@ -21,7 +21,7 @@ services:
       - /DATA/AppData/kasmweb/data:/opt
       - /DATA/AppData/kasmweb/profiles:/profiles #optional
     ports:
-      - 3000:3000
+      - 3033:3000
       - 4443:4443
     restart: unless-stopped
     devices:
