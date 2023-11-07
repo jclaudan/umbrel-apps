@@ -1,7 +1,7 @@
 manifestVersion: 1
 id: unique-code-server
 category: Development
-name: code-server
+name: unique-code-server
 version: "4.4.0"
 tagline: Run VS Code on your Umbrel
 icon: https://getumbrel.github.io/umbrel-apps-gallery/code-server/icon.svg
