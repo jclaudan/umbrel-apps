@@ -1,0 +1,34 @@
+manifestVersion: 1
+id: unique-code-server
+category: Development
+name: code-server
+version: "4.4.0"
+tagline: Run VS Code on your Umbrel
+icon: https://getumbrel.github.io/umbrel-apps-gallery/code-server/icon.svg
+description: >-
+  This is modifieid from the default to make the umbrel directory visible for editing.
+
+
+  Run VS Code on your Umbrel and access it in the browser so you can
+  code on any device with a consistent development environment. This way you can
+  use your Umbrel not only to code from any device, anywhere, but to also speed
+  up tests, compilations, downloads, and more.
+
+
+  By running all intensive tasks run on your Umbrel, preserve battery life of your devices when you're on the go.
+developer: Coder
+website: https://coder.com
+dependencies: []
+repo: https://github.com/cdr/code-server
+support: https://github.com/cdr/code-server/discussions
+port: 8091
+gallery:
+  - https://getumbrel.github.io/umbrel-apps-gallery/code-server/1.jpg
+  - https://getumbrel.github.io/umbrel-apps-gallery/code-server/2.jpg
+  - https://getumbrel.github.io/umbrel-apps-gallery/code-server/3.jpg
+path: ""
+defaultUsername: ""
+deterministicPassword: true
+torOnly: false
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel/commit/14f8b3aec8cb99ef0940ba0cd9df25b7126a95cc

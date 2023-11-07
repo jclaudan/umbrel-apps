@@ -1,0 +1,5 @@
+services:
+  openbooks:
+    volumes:
+      - ${UMBREL_EBOOK_DOWNLOADS}:/books/books
+    command: --name $RM_NAME --searchbot searchook --persist

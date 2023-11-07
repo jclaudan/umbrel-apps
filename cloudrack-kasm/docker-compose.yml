@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  kasm:
+    image: lscr.io/linuxserver/kasm:latest
+    container_name: kasm
+    user: "root"
+    privileged: true
+    environment:
+      KASM_PORT: 4443
+      DOCKER_HUB_USERNAME: USER #optional
+      DOCKER_HUB_PASSWORD: PASS #optional
+      DOCKER_MTU: 1500 #optional
+      APP_HOST: cloudrack-kasm_kasm_1
+      APP_PORT: 3000
+      PROXY_AUTH_ADD: "false"
+      PROXY_AUTH_WHITELIST: "/api/*"
+      TITLE: cloudrack-kasm
+      NVIDIA_VISIBLE_DEVICES: all # added for GPU support
+    volumes:
+      - /DATA/AppData/kasmweb/data:/opt
+      - /DATA/AppData/kasmweb/profiles:/profiles #optional
+    ports:
+      - 3000:3000
+      - 4443:4443
+    restart: unless-stopped
+    devices:
+      - /dev/input:/dev/input # added for gamepad support
+      - /run/udev/data:/run/udev/data # added for gamepad support

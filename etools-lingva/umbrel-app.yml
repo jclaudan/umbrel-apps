@@ -1,0 +1,25 @@
+manifestVersion: 1
+id: etools-lingva
+name: Lingva
+tagline: Private translator on your Umbrel
+icon: https://raw.githubusercontent.com/eudard/etools-umbrel-appstore/main/etools-lingva/lingva.svg
+category: Tools
+version: "latest"
+port: 6455
+description: >-
+  QR Code Generator
+
+developer: thedaviddelta
+website: https://github.com/thedaviddelta/lingva-translate
+submitter: eudard
+submission: https://github.com/eudard/etools-umbrel-appstore
+repo: https://github.com/thedaviddelta/lingva-translate
+support: https://github.com/thedaviddelta/lingva-translate/issues
+gallery:
+  - https://raw.githubusercontent.com/eudard/etools-umbrel-appstore/main/etools-lingva/prev1.jpg
+
+releaseNotes: >-
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

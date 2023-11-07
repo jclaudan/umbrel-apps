@@ -1,0 +1,51 @@
+manifestVersion: 1
+id: unique-yacht
+category: Development
+name: Yacht
+version: "0.07a"
+tagline: Container management UI with a focus on templates and 1-click deployments.
+icon: https://raw.githubusercontent.com/UniqueName992/Umbrel-Own-Store/master/img/unique-yacht-icon.svg
+description: >-
+  Yacht was designed from the ground up to be easily installed and used to get your website up and running quickly.
+
+
+  Yacht lets you focus on what apps you want to run instead of worrying about how to deploy them.
+
+
+  Managing large docker projects has never been easier. Import compose projects you're already using or write new ones easily using the built in editor.
+
+
+
+  Features:
+
+  - Vuetify UI Framework
+
+  - Basic Container Management
+
+  - Template Framework
+
+  - Easy Template Updating
+
+  - Centralized settings for volume management and similar QOL functionality.
+
+  - Docker-Compose Compatibility
+
+  - Advanced Container Management (Edit/Modify)
+
+  - container management
+developer: SelfhostedPro
+website: https://yacht.sh/
+dependencies: []
+repo: https://github.com/SelfhostedPro/Yacht
+support: https://github.com/SelfhostedPro/Yacht/issues
+port: 8725
+gallery:
+  - https://raw.githubusercontent.com/UniqueName992/Umbrel-Own-Store/master/img/unique-yacht-1.png
+  - https://raw.githubusercontent.com/UniqueName992/Umbrel-Own-Store/master/img/unique-yacht-2.png
+  - https://raw.githubusercontent.com/UniqueName992/Umbrel-Own-Store/master/img/unique-yacht-3.png
+  - https://raw.githubusercontent.com/UniqueName992/Umbrel-Own-Store/master/img/unique-yacht-4.png
+path: ""
+defaultUsername: "admin@yacht.local"
+defaultPassword: "pass"
+torOnly: false
+submitter: UniqueName992

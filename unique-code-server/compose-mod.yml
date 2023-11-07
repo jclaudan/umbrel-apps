@@ -1,0 +1,11 @@
+services:
+  code-server:
+    environment:
+      - PASSWORD=$APP_PASSWORD
+      - PUID=0
+      - PGID=0
+      - DEFAULT_WORKSPACE=/workspace
+    volumes:
+      - ${UNIQUE_APP_DATA_DIR}/workspace:/workspace
+      - ${UNIQUE_APP_DATA_DIR}/config:/config
+      - ${UMBREL_ROOT}:/workspace/umbrel

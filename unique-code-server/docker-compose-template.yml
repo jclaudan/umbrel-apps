@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: unique-code-server_code-server_1
+      APP_PORT: 8443
+
+  code-server:
+    image: linuxserver/code-server:4.9.1
+    restart: on-failure

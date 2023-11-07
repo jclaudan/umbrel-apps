@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: etools-youtubedl
+name: YouTube downloader
+tagline: Self-hosted YouTube downloader built on Material Design
+icon: https://raw.githubusercontent.com/Tzahi12345/YoutubeDL-Material/master/src/assets/images/logo_64px.png
+category: Networking
+version: "v4.3"
+port: 8998
+description: >-
+  YoutubeDL-Material is a Material Design frontend for youtube-dl. 
+  It's coded using Angular 15 for the frontend, and Node.js on the backend.
+developer: Tzahi12345
+website: https://github.com/Tzahi12345
+submitter: eudard
+submission: https://github.com/eudard/etools-umbrel-appstore
+repo: https://github.com/Tzahi12345/YoutubeDL-Material
+support: https://github.com/Tzahi12345/YoutubeDL-Material/issues
+gallery:
+  - https://camo.githubusercontent.com/19778a8a88f4408c10f4a16627bd1c93b321d4fa76afdab627460a066ed0a58b/68747470733a2f2f692e696d6775722e636f6d2f4336764647624c2e706e67
+  - https://camo.githubusercontent.com/4385d665dcc5ace584a1ccd6da4525ee1eeab03845dbbf5237a9e6a61f12db06/68747470733a2f2f692e696d6775722e636f6d2f764f74764835772e706e67
+releaseNotes: >-
+
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
