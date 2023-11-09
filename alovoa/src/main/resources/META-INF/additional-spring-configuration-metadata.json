@@ -1,0 +1,347 @@
+{"properties": [
+  {
+    "name": "app.schedule.short",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.short'"
+  },
+  {
+    "name": "app.schedule.delay.delete-account",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.delay.delete-account'"
+  },
+  {
+    "name": "app.schedule.delay.hide",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.delay.hide'"
+  },
+  {
+    "name": "app.schedule.long",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.long'"
+  },
+  {
+    "name": "app.schedule.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.enabled'"
+  },
+  {
+    "name": "app.schedule.delay.captcha",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.delay.captcha'"
+  },
+  {
+    "name": "app.schedule.delay.password-reset",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.delay.password-reset'"
+  },
+  {
+    "name": "app.url.auth.failure",
+    "type": "java.lang.String",
+    "description": "A description for 'app.url.auth.failure'"
+  },
+  {
+    "name": "app.url.auth.success",
+    "type": "java.lang.String",
+    "description": "A description for 'app.url.auth.success'"
+  },
+  {
+    "name": "app.donation.modulus",
+    "type": "java.lang.String",
+    "description": "A description for 'app.donation.modulus'"
+  },
+  {
+    "name": "app.interest.max-chars",
+    "type": "java.lang.String",
+    "description": "A description for 'app.interest.max-chars'"
+  },
+  {
+    "name": "app.interest.min-chars",
+    "type": "java.lang.String",
+    "description": "A description for 'app.interest.min-chars'"
+  },
+  {
+    "name": "app.vapid.public",
+    "type": "java.lang.String",
+    "description": "A description for 'app.vapid.public'"
+  },
+  {
+    "name": "app.donate.users.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.donate.users.max'"
+  },
+  {
+    "name": "app.message.size",
+    "type": "java.lang.String",
+    "description": "A description for 'app.message.size'"
+  },
+  {
+    "name": "app.search.max.distance",
+    "type": "java.lang.String",
+    "description": "A description for 'app.search.max.distance'"
+  },
+  {
+    "name": "app.search.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.search.max'"
+  },
+  {
+    "name": "app.profile.description.size",
+    "type": "java.lang.String",
+    "description": "A description for 'app.profile.description.size'"
+  },
+  {
+    "name": "app.profile.image.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.profile.image.max'"
+  },
+  {
+    "name": "app.profile.image.length",
+    "type": "java.lang.String",
+    "description": "A description for 'app.profile.image.length'"
+  },
+  {
+    "name": "app.token.length",
+    "type": "java.lang.String",
+    "description": "A description for 'app.token.length'"
+  },
+  {
+    "name": "app.donation.popup.time",
+    "type": "java.lang.String",
+    "description": "A description for 'app.donation.popup.time'"
+  },
+  {
+    "name": "app.age.range",
+    "type": "java.lang.String",
+    "description": "A description for 'app.age.range'"
+  },
+  {
+    "name": "app.age.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.age.max'"
+  },
+  {
+    "name": "app.age.min",
+    "type": "java.lang.String",
+    "description": "A description for 'app.age.min'"
+  },
+  {
+    "name": "app.password-token.length",
+    "type": "java.lang.String",
+    "description": "A description for 'app.password-token.length'"
+  },
+  {
+    "name": "app.captcha.length",
+    "type": "java.lang.String",
+    "description": "A description for 'app.captcha.length'"
+  },
+  {
+    "name": "app.audio.max-size",
+    "type": "java.lang.String",
+    "description": "A description for 'app.audio.max-size'"
+  },
+  {
+    "name": "app.audio.max-time",
+    "type": "java.lang.String",
+    "description": "A description for 'app.audio.max-time'"
+  },
+  {
+    "name": "app.domain",
+    "type": "java.lang.String",
+    "description": "A description for 'app.domain'"
+  },
+  {
+    "name": "app.name",
+    "type": "java.lang.String",
+    "description": "A description for 'app.name'"
+  },
+  {
+    "name": "app.tos.update-date",
+    "type": "java.lang.String",
+    "description": "A description for 'app.tos.update-date'"
+  },
+  {
+    "name": "app.privacy.update-date",
+    "type": "java.lang.String",
+    "description": "A description for 'app.privacy.update-date'"
+  },
+  {
+    "name": "app.company.name",
+    "type": "java.lang.String",
+    "description": "A description for 'app.company.name'"
+  },
+  {
+    "name": "app.interest.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.interest.max'"
+  },
+  {
+    "name": "app.user.delete.delay",
+    "type": "java.lang.String",
+    "description": "A description for 'app.user.delete.delay'"
+  },
+  {
+    "name": "app.age.legal",
+    "type": "java.lang.String",
+    "description": "A description for 'app.age.legal'"
+  },
+  {
+    "name": "app.profile.image.max-size",
+    "type": "java.lang.String",
+    "description": "A description for 'app.profile.image.max-size'"
+  },
+  {
+    "name": "app.media.max-size",
+    "type": "java.lang.String",
+    "description": "A description for 'app.media.max-size'"
+  },
+  {
+    "name": "app.vapid.private",
+    "type": "java.lang.String",
+    "description": "A description for 'app.vapid.private'"
+  },
+  {
+    "name": "app.text.key",
+    "type": "java.lang.String",
+    "description": "A description for 'app.text.key'"
+  },
+  {
+    "name": "app.text.salt",
+    "type": "java.lang.String",
+    "description": "A description for 'app.text.salt'"
+  },
+  {
+    "name": "app.admin.email",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.email'"
+  },
+  {
+    "name": "app.admin.key",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.key'"
+  },
+  {
+    "name": "app.vapid.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.vapid.max'"
+  },
+  {
+    "name": "app.conversation.messages-max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.conversation.messages-max'"
+  },
+  {
+    "name": "app.intention.delay",
+    "type": "java.lang.String",
+    "description": "A description for 'app.intention.delay'"
+  },
+  {
+    "name": "app.first-name.length-min",
+    "type": "java.lang.String",
+    "description": "A description for 'app.first-name.length-min'"
+  },
+  {
+    "name": "app.first-name.length-max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.first-name.length-max'"
+  },
+  {
+    "name": "app.schedule.delay.contact",
+    "type": "java.lang.String",
+    "description": "A description for 'app.schedule.delay.contact'"
+  },
+  {
+    "name": "app.login.remember.key",
+    "type": "java.lang.String",
+    "description": "A description for 'app.login.remember.key'"
+  },
+  {
+    "name": "app.mail.plus-addressing",
+    "type": "java.lang.String",
+    "description": "A description for 'app.mail.plus-addressing'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": ".referral.max",
+    "type": "java.lang.String",
+    "description": "A description for '.referral.max'"
+  },
+  {
+    "name": "app.referral.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.referral.max'"
+  },
+  {
+    "name": "app.user.delete.duration.valid",
+    "type": "java.lang.String",
+    "description": "A description for 'app.user.delete.duration.valid'"
+  },
+  {
+    "name": "app.user.password-reset.duration.valid",
+    "type": "java.lang.String",
+    "description": "A description for 'app.user.password-reset.duration.valid'"
+  },
+  {
+    "name": "app.user.captcha.duration.valid",
+    "type": "java.lang.String",
+    "description": "A description for 'app.user.captcha.duration.valid'"
+  },
+  {
+    "name": "app.donate.kofi.key",
+    "type": "java.lang.String",
+    "description": "A description for 'app.donate.kofi.key'"
+  },
+  {
+    "name": "app.donate.bmac.key",
+    "type": "java.lang.String",
+    "description": "A description for 'app.donate.bmac.key'"
+  },
+  {
+    "name": "app.interest.autocomplete.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.interest.autocomplete.max'"
+  },
+  {
+    "name": "app.search.estimate.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.search.estimate.max'"
+  },
+  {
+    "name": "app.search.estimate.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.search.estimate.max'"
+  },
+  {
+    "name": "app.search.estimate.max",
+    "type": "java.lang.String",
+    "description": "A description for 'app.search.estimate.max'"
+  }
+]}

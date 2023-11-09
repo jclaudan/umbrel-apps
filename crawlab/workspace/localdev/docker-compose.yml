@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+
+  fs:
+    image: chrislusf/seaweedfs:2.79 # use a remote image
+    container_name: crawlab_localdev_fs
+    restart: always
+#    command: "server -dir /data -master.dir /data -volume.dir.idx /data -ip localhost -ip.bind 0.0.0.0 -filer -encryptVolumeData" # auth
+    command: "server -dir /data -master.dir /data -volume.dir.idx /data -ip localhost -ip.bind 0.0.0.0 -filer" # no auth
+    ports:
+      - 8080:8080
+      - 8888:8888
+      - 9333:9333
+      - 7333:7333
+    volumes:
+      - ./data/fs:/data
+  
+  mongo:
+    image: mongo:5
+    container_name: crawlab_localdev_mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongo:/data
+
+  mysql:
+    platform: linux/x86_64
+    image: mysql:8
+    container_name: crawlab_local_dev_mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: crawlab
+      MYSQL_DATABASE: crawlab
+      MYSQL_USER: crawlab
+      MYSQL_PASSWORD: crawlab

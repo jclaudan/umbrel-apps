@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html th:with="lang=${#locale.language}" th:lang="${lang}" dir="auto">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Alovoa">
+	<meta name="theme-color" content="#121212">
+	<meta property="og:image" content="/img/share.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="800">
+	<meta property="og:image:height" content="432">
+
+	<link rel="manifest" href="/manifest/manifest.json">
+	<link rel="apple-touch-icon" href="/img/android-chrome-192x192.png">
+
+	<link rel="stylesheet" href="/css/lib/bulma.min.css" />
+	<th:block th:replace="~{fragments.html::bulma}"></th:block>
+	<th:block th:replace="~{fragments.html::ui-design}"></th:block>
+	<link rel="stylesheet" href="/css/lib/bulma-collapsible.min.css" />
+	<link rel="stylesheet" href="/css/lib/modal-fx.min.css" />
+	<link rel="stylesheet" href="/css/lib/animate.min.css" />
+	<link rel="stylesheet" href="/css/lib/css-loaders.css" />
+	<link rel="stylesheet" href="/css/alovoa.css" />
+	<link rel="stylesheet" href="/css/index.css" />
+
+	<link rel="alternate" hreflang="en" href="/?lang=en" />
+	<link rel="alternate" hreflang="de" href="/?lang=de" />
+	<link rel="alternate" hreflang="es" href="/?lang=es" />
+	<link rel="alternate" hreflang="fr" href="/?lang=fr" />
+	<link rel="alternate" hreflang="pt" href="/?lang=pt" />
+	<link rel="alternate" hreflang="it" href="/?lang=it" />
+	<link rel="alternate" hreflang="ru" href="/?lang=ru" />
+	<link rel="alternate" hreflang="ja" href="/?lang=ja" />
+	<link rel="alternate" hreflang="zh" href="/?lang=zh" />
+	<link rel="alternate" hreflang="ko" href="/?lang=ko" />
+	<link rel="alternate" hreflang="ar" href="/?lang=ar" />
+	<link rel="alternate" hreflang="tr" href="/?lang=tr" />
+
+	<title th:text="#{app.name} + ' - ' + #{index.subtitle}"></title>
+	<meta name="description" th:content="#{meta.content}">
+
+</head>
+
+<body class="preload">
+	<div class="loader-parent" id="preloader-parent" style="display: flex">
+		<div class="loader" id="preloader"></div>
+	</div>
+	<div id="main">
+		<header th:replace="~{fragments.html::header-index}"></header>
+		<div id="hero-gravity"></div>
+		
+		<section id="hero">
+			<div class="hero-body">
+				<div class="container has-text-centered">
+					<h1 class="title is-size-2 hero-text" th:text="#{app.name}" style="color: white;"></h1>
+					<h2 class="subtitle is-size-4 hero-text" th:text="#{index.subtitle}" style="color: white;"></h2>
+					<div id="hero-padding"></div>
+					<a class="button is-info colored" id="hero-register-button" th:utext="#{index.sign-up-now}"
+						href="/register"></a>
+					<div class="hero-text" th:text="#{index.subtitle-2}" style="color: white;"></div>
+					<div class="hero-text" th:text="#{index.notice}" style="font-size: 0.6em; color: white;"></div>
+				</div>
+			</div>
+		</section>
+
+		<div style="padding-top: 24px;"></div>
+		
+		<header class="card-header collapsible-header">
+			<a href="#collapsible-card" data-action="collapse" class="card-header-icon is-hidden-fullscreen full-width"
+				aria-label="more options" style="padding: 1.25rem; display: flex; justify-content: space-between;">
+				<span class="label" style="margin-bottom: initial;" th:text="#{index.key-features}"></span>
+				<div class="navbar-link"></div>
+			</a>
+		</header>
+		<div id="collapsible-card" class="is-collapsible">
+			<section class="container cards">
+				<div class="columns features">
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-hand-holding-usd" id="icon-free"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.free.title}"></h4>
+									<p th:utext="#{index.free.description}"></p>
+									<p>
+										<a href="/donate-list" th:utext="#{donate}" target="_blank"></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-door-open" id="icon-open-source"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.open-source.title}"></h4>
+									<p th:utext="#{index.open-source.description}"></p>
+									<p>
+										<a href="https://github.com/Alovoa/alovoa" th:utext="#{source-code}"></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-lock" id="icon-private"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.private.title}"></h4>
+									<p th:utext="#{index.private.description}"></p>
+									<p>
+										<a href="/privacy" th:utext="#{privacy-policy}"></a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="container cards">
+				<div class="columns features">
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-ad" id="icon-ad-free"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.ad-free.title}"></h4>
+									<p th:utext="#{index.ad-free.description}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-microchip" id="icon-technology"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.technology.title}"></h4>
+									<p th:utext="#{index.technology.description}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column is-4">
+						<div class="card is-shady">
+							<div class="card-image has-text-centered">
+								<i class="fa fa-child" id="icon-for-you"></i>
+							</div>
+							<div class="card-content">
+								<div class="content">
+									<h4 th:utext="#{index.for-you.title}"></h4>
+									<p th:text="#{index.for-you.description}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div style="margin-top: 1.5em"></div>
+
+		<section class="container">
+			<div class="box" id="cookie-banner" onclick="cookieClick()" style="display: none;">
+				<span th:text="#{index.cookie.notice}"></span>
+				<span><a href="/privacy#cookies" th:text="#{index.cookie.more}"></a></span>
+			</div>
+		</section>
+		
+		<!-- for preview purposes -->
+		<img src="/img/android-chrome-512x512.png" style="visibility: hidden; z-index: 40;">
+
+		<div id="ios-pwa-modal" class="modal modal-fx-fadeInScale">
+			<div class="modal-background" onclick="closeModal()"></div>
+			<div class="modal-content">
+				<!-- https://blog.expo.io/enabling-ios-splash-screens-for-progressive-web-apps-34f06f096e5c -->
+				<img id="ios-pwa" src="/img/ios-pwa.webp" style="width: 100%">
+			</div>
+		</div>
+		<footer th:replace="~{fragments.html::footer}"></footer>
+	</div>
+
+	<script src="/sw.js"></script>
+	<script src="/js/lib/fontawesome.all.js"></script>
+	<script src="/js/lib/jquery.min.js"></script>
+	<script src="/js/lib/bulma-collapsible.min.js"></script>
+	<script src="/js/lib/bulma-toast.min.js"></script>
+	<script src="/js/lib/matter.min.js"></script>
+	<script src="/js/lib/modal-fx.min.js"></script>
+	<script src="/js/tools/get-text.js"></script>
+	<script src="/js/tools/modal.js"></script>
+	<script src="/js/alovoa.js"></script>
+	<script src="/js/index.js"></script>
+</body>
+
+
+</html>

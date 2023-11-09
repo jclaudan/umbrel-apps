@@ -1,0 +1,40 @@
+{
+  "short_name": "Alovoa",
+  "name": "Alovoa",
+  "icons": [
+    {
+      "src": "/img/alovoa_56.png",
+      "type": "image/png",
+      "sizes": "56x56"
+    },
+    {
+      "src": "/img/alovoa_112.png",
+      "type": "image/png",
+      "sizes": "112x112"
+    },
+    {
+      "src": "/img/alovoa_128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/img/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "Alovoa",
+  "start_url": "/?pwa",
+  "background_color": "#ec407a",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ec407a",
+  "description" : "Meet new, exciting people! 100% free and open-source.",
+  "orientation" : "portrait",
+  "lang" : "en-US"
+}

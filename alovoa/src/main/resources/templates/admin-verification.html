@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html dir="auto" th:lang="${lang}" th:with="lang=${#locale.language}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="Alovoa" name="apple-mobile-web-app-title">
+    <meta content="#121212" media="(prefers-color-scheme: dark)" name="theme-color">
+    <link href="/manifest/manifest.json" rel="manifest">
+
+    <link href="/css/lib/bulma.min.css" rel="stylesheet"/>
+    <th:block th:replace="~{fragments.html::bulma}"></th:block>
+    <th:block th:replace="~{fragments.html::ui-design}"></th:block>
+    <link href="/css/lib/animate.min.css" rel="stylesheet"/>
+    <link href="/css/alovoa.css" rel="stylesheet"/>
+    <title th:text="#{admin.title}"></title>
+
+
+    <style>
+        .profile-pic {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="main">
+    <div style="padding-top: 4px;"></div>
+    <div class="box">
+        <h3>Verify users</h3>
+        <div class="verification" style="padding-bottom: 16px;" th:each="verification : ${verifications}" th:id="${verification.idEnc}">
+            <div class="verification-images">
+                <img class="profile-pic" th:src="${verification.verificationPicture}">
+                <img class="profile-pic" th:src="${verification.profilePicture}">
+            </div>
+            <div>
+                <div id="verification-text" th:text="${verification.verificationString}"></div>
+            </div>
+            <div class="verification-buttons">
+                <button class="button" th:onclick="verifyVerification([[${verification.idEnc}]])">Verify</button>
+                <button class="button" th:onclick="deleteVerification([[${verification.idEnc}]])">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-bottom: 24px;"></div>
+
+</div>
+
+<script src="/sw.js"></script>
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/lib/fontawesome.all.js"></script>
+<script src="/js/lib/bulma-toast.min.js"></script>
+<script src="/js/tools/get-text.js"></script>
+<script src="/js/alovoa.js"></script>
+<script src="/js/admin-verification.js"></script>
+</body>
+
+</html>

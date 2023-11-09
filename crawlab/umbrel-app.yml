@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: crawlab
+category: development
+name: Crawlab
+version: "latest"
+tagline: Distributed web crawler admin platform for any framework
+description: >-
+  Crawlab is a Golang-based distributed web crawler management platform that supports
+  various languages and web crawler frameworks. It's designed to run and manage
+  web crawlers at scale, providing a user-friendly interface for deploying and monitoring spiders.
+
+  Install Crawlab on your Umbrel to manage your scraping tasks efficiently and scale your crawling strategy.
+developer: Crawlab Team
+website: https://crawlab.cn
+dependencies: ["mongo"]
+repo: https://github.com/crawlab-team/crawlab
+support: https://github.com/crawlab-team/crawlab/issues
+port: 8080
+gallery:
+  - crawlab-1.jpg
+  - crawlab-2.jpg
+  - crawlab-3.jpg
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  The latest release of Crawlab includes enhancements for task scheduling,
+  improved UI, bug fixes, and more. Check the GitHub releases for detailed changelog.
+submitter: Your Name
+submission: <Your submission PR link on GitHub>

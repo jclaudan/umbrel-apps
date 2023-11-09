@@ -1,0 +1,28 @@
+manifestVersion: 1
+id: alovoa
+category: social
+name: Alovoa
+version: "latest"
+tagline: Open-source dating platform with privacy at its core
+description: >-
+  Alovoa is the first widespread free and open-source dating web platform. It offers
+  a privacy-focused experience with no ads, no selling of data, and no paid features.
+  Aimed at providing a secure and open alternative to traditional dating apps.
+
+  Install Alovoa on your Umbrel to begin hosting your private dating service.
+developer: Alovoa Team
+website: https://alovoa.com/
+dependencies: ["mariadb"]
+repo: https://github.com/Alovoa/alovoa
+support: https://github.com/Alovoa/alovoa/issues
+port: 8081
+gallery:
+  - alovoa-1.jpg
+  - alovoa-2.jpg
+  - alovoa-3.jpg
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  Latest updates include new features, enhanced privacy controls, and various performance improvements. Check the GitHub releases for a detailed changelog.
+submitter: [Your Name]
+submission: [Your submission PR link on GitHub]
