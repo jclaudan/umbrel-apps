@@ -15,7 +15,7 @@ website: https://crawlab.cn
 dependencies: ["mongo"]
 repo: https://github.com/crawlab-team/crawlab
 support: https://github.com/crawlab-team/crawlab/issues
-port: 8080
+port: 8088
 gallery:
   - crawlab-1.jpg
   - crawlab-2.jpg
