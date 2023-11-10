@@ -12,7 +12,7 @@ services:
       context: ${APP_DATA_DIR}
       target: backend
     env_file:
-      - ${APP_DATA_DIR}/.env
+      - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     restart: always
     environment:
       # Edit the below line to match your PostgresDB URL if you have an outside DB (make sure to update the .env file as well)
@@ -38,7 +38,7 @@ services:
       context: ${APP_DATA_DIR}
       target: app
     env_file:
-      - ${APP_DATA_DIR}/.env
+      - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
       - hoppscotch-backend
     ports:
@@ -54,7 +54,7 @@ services:
       context: ${APP_DATA_DIR}
       target: sh_admin
     env_file:
-      - ${APP_DATA_DIR}/.env
+      - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
       - hoppscotch-backend
     ports:
@@ -68,7 +68,7 @@ services:
       context: ${APP_DATA_DIR}
       target: aio
     env_file:
-      - ${APP_DATA_DIR}/.env
+      - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
       hoppscotch-db:
         condition: service_healthy
