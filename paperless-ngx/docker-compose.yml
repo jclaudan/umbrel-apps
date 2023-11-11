@@ -45,7 +45,8 @@ services:
       POSTGRES_PASSWORD: paperless
 
   paperless_webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:feature-toasts-v2    restart: unless-stopped
+    image: ghcr.io/paperless-ngx/paperless-ngx:feature-toasts-v2
+    restart: unless-stopped
     depends_on:
       - paperless_db
       - paperless_broker
