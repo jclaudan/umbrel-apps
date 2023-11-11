@@ -68,8 +68,3 @@ services:
       PAPERLESS_DBHOST: paperless_db
 
 
-volumes:
-  data:
-  media:
-  pgdata:
-  redisdata:
