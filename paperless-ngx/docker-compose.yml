@@ -45,7 +45,7 @@ services:
       POSTGRES_PASSWORD: paperless
 
   paperless_webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:feature-toasts-v2
+    image: ghcr.io/paperless-ngx/paperless-ngx:1.17.4@sha256:b2f1ec7f2073fba8d11993b9477122b3589ac88b17aa05ff309dc73f337c64c6
     restart: unless-stopped
     depends_on:
       - paperless_db
