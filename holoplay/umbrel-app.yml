@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: holoplay
+name: HoloPlay
+tagline: Streamlined audio streaming from YouTube using Invidious API.
+icon: ./docs/logo.png
+category: Media
+version: "latest"
+port: 3891
+description: >-
+  HoloPlay is a YouTube alternative app using the Invidious API, allowing users to save music to favorites or create playlists. It offers features like data syncing between devices, internationalization, dark theme, and background mode with PWA installation.
+developer: HoloPlay Community
+website: [Your HoloPlay Website URL]
+submitter: HoloPlay Community
+submission: https://github.com/stephane-r/holoplay-pwa
+repo: https://github.com/stephane-r/holoplay-pwa
+support: [Your Support URL or Contact]
+gallery:
+  - ./docs/screenshots/dashboard.png
+  - ./docs/screenshots/search.png
+  - ./docs/screenshots/playlists.png
+releaseNotes: >-
+  [Include release notes or description of the latest version here]
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

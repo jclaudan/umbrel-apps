@@ -1,0 +1,6 @@
+version: '3'
+services:
+  holoplay:
+    image: spout8301/holoplay:latest
+    ports:
+      - "3891:3000"
