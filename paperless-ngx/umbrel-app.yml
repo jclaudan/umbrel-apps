@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: paperless-ngx
+category: productivity
+name: Paperless-ngx
+version: "latest"
+tagline: Transform physical documents into a searchable online archive
+description: >-
+  Paperless-ngx is a document management system designed to reduce paper usage by digitizing physical documents into a searchable archive. It features OCR capabilities, email processing, full-text search, machine learning powered document matching, and more.
+
+  Deploy Paperless-ngx on your Umbrel to manage your documents securely and efficiently.
+developer: Paperless-ngx Team
+website: https://paperless-ngx.com
+dependencies: ["postgres", "redis"]
+repo: https://github.com/paperless-ngx/paperless-ngx
+support: https://github.com/paperless-ngx/paperless-ngx/issues
+port: 8100
+gallery:
+  - paperless-1.jpg
+  - paperless-2.jpg
+  - paperless-3.jpg
+path: ""
+defaultPassword: ""
+releaseNotes: >-
+  The latest updates include new features, improvements to OCR and search functionalities, and various bug fixes. Detailed changelog available on GitHub.
+submitter: [Your Name]
+submission: [Your submission PR link on GitHub]
