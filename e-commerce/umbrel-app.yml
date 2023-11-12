@@ -1,0 +1,40 @@
+manifestVersion: 1
+id: e-commerce
+category: utility
+name: E-commerce
+version: "1.0"
+tagline: Multi-vendor e-commerce platform with diverse panels
+description: >-
+  E-commerce is a comprehensive multi-vendor e-commerce website that offers
+  distinct panels for administrators, sellers, and delivery personnel. It 
+  provides an integrated environment for managing various e-commerce 
+  activities efficiently.
+
+  The platform offers a variety of features including product management,
+  order processing, and user engagement tools. It is built with modern 
+  web technologies including HTML5, CSS3, JavaScript, PHP, and MySQL, 
+  ensuring a robust and scalable solution for e-commerce needs.
+
+  This platform is designed to provide users with a seamless online shopping
+  experience, while offering sellers and admins intuitive tools for
+  business management.
+releaseNotes: >-
+  Initial release of the E-commerce platform.
+developer: Your Name or Organization
+website: [Your Website URL]
+dependencies:
+  - mysql
+  - php
+  - nginx
+repo: https://github.com/yourusername/e-commerce
+support: [Your Support Page URL]
+port: 3001
+gallery:
+  - image1.jpg
+  - image2.jpg
+  - image3.jpg
+path: "/path/to/app"
+defaultUsername: "admin"
+defaultPassword: "password"
+submitter: Your Name or Organization
+submission: [Link to your pull request on Umbrel's repository]
