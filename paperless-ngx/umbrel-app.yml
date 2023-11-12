@@ -6,7 +6,7 @@ version: "latest"
 tagline: Transform physical documents into a searchable online archive
 description: >-
   Paperless-ngx is a document management system designed to reduce paper usage by digitizing physical documents into a searchable archive. It features OCR capabilities, email processing, full-text search, machine learning powered document matching, and more.
-
+  connect to container and run docker exec -it paperless-ngx_paperless_webserver_1 bash , python3 manage.py createsuperuser
   Deploy Paperless-ngx on your Umbrel to manage your documents securely and efficiently.
 developer: Paperless-ngx Team
 website: https://paperless-ngx.com
