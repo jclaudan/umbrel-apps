@@ -40,9 +40,9 @@ services:
     volumes:
       - ${APP_DATA_DIR}/pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: ${PAPERLESS_NGX_POSTGRES_DB}
-      POSTGRES_USER: ${PAPERLESS_NGX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${PAPERLESS_NGX_POSTGRES_PASSWORD}
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: paperless
 
   paperless_webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:1.17.4@sha256:b2f1ec7f2073fba8d11993b9477122b3589ac88b17aa05ff309dc73f337c64c6
