@@ -10,7 +10,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: hoppscotch-backend
+      target: backend
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     restart: always
@@ -36,7 +36,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: hoppscotch-app
+      target: app
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
@@ -52,7 +52,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: hoppscotch-sh-admin
+      target: sh_admin
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
@@ -66,7 +66,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: hoppscotch-aio
+      target: aio
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
