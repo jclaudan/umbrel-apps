@@ -22,7 +22,7 @@ gallery:
   - image1.jpg
   - image2.jpg
   - image3.jpg
-path: "/path/to/hoppscotch"
+path: ""
 defaultUsername: ""
 defaultPassword: ""
 submitter: Hoppscotch Community
