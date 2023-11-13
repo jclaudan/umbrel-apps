@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: hoppscotch
+category: developer-tools
+name: Hoppscotch
+version: "latest"
+tagline: Open Source API Development Ecosystem
+description: >-
+  Hoppscotch is an open-source API development ecosystem that offers a range of features for API testing and development. It's lightweight, fast, and includes support for various HTTP methods, theming, Progressive Web App capabilities, WebSocket, and many other protocols. The platform is designed to facilitate API development with a real-time response view and advanced request crafting capabilities.
+
+  Additionally, Hoppscotch supports authorization methods, request headers, parameters, and provides extensive support for GraphQL. It also includes features for team collaboration, workspaces, and a range of other productivity-enhancing functionalities.
+releaseNotes: >-
+  The latest release of Hoppscotch includes enhanced features for API testing, added support for various protocols, improved UI/UX, and performance optimizations.
+developer: Hoppscotch Contributors
+website: https://hoppscotch.io
+dependencies:
+  - postgres
+  - node
+repo: https://github.com/hoppscotch/hoppscotch
+support: [GitHub Discussions URL]
+port: 3010
+gallery:
+  - image1.jpg
+  - image2.jpg
+  - image3.jpg
+path: "/path/to/hoppscotch"
+defaultUsername: ""
+defaultPassword: ""
+submitter: Hoppscotch Community
+submission: [Link to your pull request on Umbrel's repository]
