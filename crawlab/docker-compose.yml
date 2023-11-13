@@ -6,6 +6,8 @@ services:
     environment:
       CRAWLAB_NODE_MASTER: "Y"
       CRAWLAB_MONGO_HOST: "mongo"
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/crawlab/data/crawlab/master:/data
     ports:
       - "8088:8080"
     depends_on:
