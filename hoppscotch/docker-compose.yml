@@ -10,7 +10,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: backend
+      target: hoppscotch-backend
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     restart: always
