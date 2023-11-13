@@ -5,12 +5,12 @@ services:
     container_name: crawlab_master
     environment:
       CRAWLAB_NODE_MASTER: "Y"
-      CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_MONGO_HOST: "crawlab_mongo"
     volumes:
       - ${UMBREL_ROOT}/data/storage/crawlab/data/crawlab/master:/data
     ports:
       - "8088:8080"
     depends_on:
-      - mongo
-  mongo:
+      - crawlab_mongo
+  crawlab_mongo:
     image: mongo:4.2
