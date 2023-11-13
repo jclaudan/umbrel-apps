@@ -36,7 +36,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: app
+      target: hoppscotch-app
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
@@ -52,7 +52,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: sh_admin
+      target: hoppscotch-sh-admin
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
@@ -66,7 +66,7 @@ services:
     build:
       dockerfile: prod.Dockerfile
       context: ${APP_DATA_DIR}
-      target: aio
+      target: hoppscotch-aio
     env_file:
       - ${UMBREL_ROOT}/data/storage/hoppscotch/.env
     depends_on:
