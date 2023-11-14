@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+version: '3'
+
+services:
+
+  prestashop_db:
+    container_name: prestashop_db
+    image: mysql:5.7
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: ${UMBREL_ROOT}/data/storage/prestashop/.env
+    networks:
+      - prestashop-net
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/prestashop/dbdata:/var/lib/mysql
+
+  prestashop:
+    container_name: prestashop
+    image: prestashop/prestashop:latest
+    restart: unless-stopped
+    depends_on:
+      - prestashop_db
+    links:
+      - prestashop_db
+    ports:
+      - "8092:80"
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/prestashop/modules:/var/www/html/modules
+      - ${UMBREL_ROOT}/data/storage/prestashop/themes:/var/www/html/themes
+      - ${UMBREL_ROOT}/data/storage/prestashop/override:/var/www/html/override
+    env_file: ${UMBREL_ROOT}/data/storage/prestashop/.env
+    networks:
+      - prestashop-net
+
+  prestashop_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: prestashop_phpmyadmin
+    ports:
+      - "8082:80"
+    depends_on:
+      - prestashop_db
+    links:
+      - prestashop_db
+    env_file: ${UMBREL_ROOT}/data/storage/prestashop/.env
+    restart: always
+    networks:
+      - prestashop-net
+
+networks:
+  prestashop-net:
+    driver: bridge
+
+volumes:
+  dbdata:

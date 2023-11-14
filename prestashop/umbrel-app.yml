@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: prestashop
+category: e-commerce
+name: PrestaShop
+version: "latest"
+tagline: Open Source E-commerce Web Application
+description: >-
+  PrestaShop is an open-source e-commerce platform, offering a rich set of features for creating and managing an online store. It supports major payment services, is available in many languages, and is customizable for various country localizations. PrestaShop's design is responsive, suitable for both front and back office, and it's built using PHP.
+
+  This application is geared towards providing merchants with the best shopping cart experience and customers with a seamless buying process. Its extensive feature set includes everything needed to manage product listings, handle payments, shipping, and customers.
+releaseNotes: >-
+  Latest stable release of PrestaShop. Features improvements in shopping cart experience, payment integrations, performance optimizations, and UI enhancements.
+developer: PrestaShop Community
+website: https://www.prestashop.com
+dependencies:
+  - mysql
+  - php
+repo: https://github.com/PrestaShop/PrestaShop
+support: [GitHub Discussions URL]
+port: 8092
+gallery:
+  - image1.jpg
+  - image2.jpg
+  - image3.jpg
+path: ""
+defaultUsername: "admin"
+defaultPassword: "admin"
+submitter: PrestaShop Community
+submission: [Link to your pull request on Umbrel's repository]
