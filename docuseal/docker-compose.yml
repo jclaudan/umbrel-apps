@@ -27,11 +27,11 @@ services:
 
   docuseal_caddy:
     image: caddy:latest
-    command: caddy reverse-proxy --from $HOST --to docuseal_app:3000
+    command: caddy reverse-proxy --from $HOST --to docuseal_app:3001
     ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
+      - 8980:80
+      - 8943:443
+      - 8943:443/udp
     volumes:
       - ${UMBREL_ROOT}/data/storage/docuseal/caddy_data:/data
     env_file:
