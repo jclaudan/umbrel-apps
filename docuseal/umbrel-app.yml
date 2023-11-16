@@ -1,0 +1,24 @@
+manifestVersion: 1
+id: docuseal
+category: document-management
+name: DocuSeal
+version: "latest"
+tagline: Open Source Document Filling and Signing
+description: >-
+  DocuSeal is an open-source platform providing secure and efficient digital document signing and processing. It allows creating PDF forms for online filling and signing on any device with an easy-to-use, mobile-optimized web tool.
+releaseNotes: >-
+  Latest release of DocuSeal with enhanced features for document management and processing.
+developer: DocuSeal LLC
+website: https://www.docuseal.co
+dependencies:
+  - postgres
+repo: https://github.com/docusealco/docuseal
+support: [GitHub Discussions URL or other support link]
+port: 3001
+gallery:
+  - https://img.shields.io/docker/v/docuseal/docuseal
+path: "${UMBREL_ROOT}/data/storage/docuseal"
+defaultUsername: "admin"
+defaultPassword: "admin"
+submitter: DocuSeal Community
+submission: [Link to your pull request on Umbrel's repository]

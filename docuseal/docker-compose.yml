@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  docuseal_app:
+    depends_on:
+      docuseal_postgres:
+        condition: service_healthy
+    image: docuseal/docuseal:latest
+    ports:
+      - "3001:3000"  # Port modifié pour éviter les conflits
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/docuseal/data:/data
+    env_file:
+      - ${UMBREL_ROOT}/data/storage/docuseal/.env
+
+  docuseal_postgres:
+    image: postgres:15
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/docuseal/pg_data:/var/lib/postgresql/data
+    env_file:
+      - ${UMBREL_ROOT}/data/storage/docuseal/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  docuseal_caddy:
+    image: caddy:latest
+    command: caddy reverse-proxy --from $HOST --to docuseal_app:3000
+    ports:
+      - 80:80
+      - 443:443
+      - 443:443/udp
+    volumes:
+      - ${UMBREL_ROOT}/data/storage/docuseal/caddy_data:/data
+    env_file:
+      - ${UMBREL_ROOT}/data/storage/docuseal/.env
