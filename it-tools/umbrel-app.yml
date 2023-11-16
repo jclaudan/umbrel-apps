@@ -21,7 +21,7 @@ gallery:
   - image1.jpg
   - image2.jpg
   - image3.jpg
-path: "/path/to/app"
+path: ""
 defaultUsername: ""
 defaultPassword: ""
 submitter: Corentin Thomasset

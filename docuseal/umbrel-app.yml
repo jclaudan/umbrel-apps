@@ -17,7 +17,7 @@ support: [GitHub Discussions URL or other support link]
 port: 3001
 gallery:
   - https://img.shields.io/docker/v/docuseal/docuseal
-path: "${UMBREL_ROOT}/data/storage/docuseal"
+path: ""
 defaultUsername: "admin"
 defaultPassword: "admin"
 submitter: DocuSeal Community
