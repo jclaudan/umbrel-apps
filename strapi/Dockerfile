@@ -13,6 +13,12 @@ COPY . .
 ENV PATH /opt/node_modules/.bin:$PATH
 RUN chown -R node:node /opt/app
 USER node
+
+RUN yarn add @strapi/plugin-documentation
+RUN yarn add @strapi/plugin-graphql
+RUN yarn add strapi-stripe
+RUN yarn add @strapi/plugin-open-ai
+
 RUN ["yarn", "build"]
 EXPOSE 1337
 CMD ["yarn", "develop"]
