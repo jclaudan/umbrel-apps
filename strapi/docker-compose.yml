@@ -4,6 +4,7 @@ services:
     container_name: strapi
     build: ${APP_DATA_DIR}
     image: strapi:latest
+    mem_limit: 512m
     restart: unless-stopped
     env_file: ${UMBREL_ROOT}/data/storage/strapi/.env
     environment:
