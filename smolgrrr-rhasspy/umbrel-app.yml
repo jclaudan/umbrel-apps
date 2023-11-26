@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: smolgrrr-rhasspy
+category: Finance
+name: Rhasspy
+icon: https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg
+version: "2.5.0"
+tagline: Rhasspy is an open source, fully offline voice assistant 
+description: >-
+  Rhasspy is an open source, fully offline set of voice assistant services for many human languages that works well with:
+
+  Hermes protocol compatible services (Snips.AI)
+  Home Assistant and Hass.io
+  Node-RED
+  Jeedom
+  OpenHAB
+releaseNotes: >-
+  First release
+developer: Michael Hansen, smolgrrr
+website: https://rhasspy.readthedocs.io/en/latest/
+dependencies: []
+repo: https://github.com/rhasspy
+support: https://github.com/rhasspy/rhasspy/issues
+port: 12101
+gallery:
+  - https://rhasspy.readthedocs.io/en/latest/img/web-speech.png
+  - https://rhasspy.readthedocs.io/en/latest/img/services.png
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+
