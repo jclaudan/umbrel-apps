@@ -3,12 +3,12 @@ version: '3.6'
 services:
   llama-gpt-api-cuda-gguf:
     build:
-      context: ${APP_DATA_DIR}/cuda
+      context: ./cuda
       dockerfile: gguf.Dockerfile
     restart: on-failure
     volumes:
-      - '${APP_DATA_DIR}/models:/models'
-      - '${APP_DATA_DIR}/cuda:/cuda'
+      - './models:/models'
+      - './cuda:/cuda'
     ports:
       - 3001:8000
     environment:
@@ -32,10 +32,10 @@ services:
     # TODO: Use this image instead of building from source after the next release
     # image: 'ghcr.io/getumbrel/llama-gpt-ui:latest'
     build:
-      context: ${APP_DATA_DIR}/ui
+      context: ./ui
       dockerfile: Dockerfile
     ports:
-      - 3745:3000
+      - 3000:3000
     restart: on-failure
     environment:
       - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'

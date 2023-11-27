@@ -1,14 +1,13 @@
 version: '3.6'
 
 services:
-  llama-gpt-api-cuda-gguf:
-    build:
-      context: ${APP_DATA_DIR}/cuda
-      dockerfile: gguf.Dockerfile
+  llama-gpt-api:
+    # Pin to llama-cpp-python 0.1.80 with GGUF support
+    image: ghcr.io/abetlen/llama-cpp-python:latest@sha256:de0fd227f348b5e43d4b5b7300f1344e712c14132914d1332182e9ecfde502b2
     restart: on-failure
     volumes:
-      - '${APP_DATA_DIR}/models:/models'
-      - '${APP_DATA_DIR}/cuda:/cuda'
+      - './models:/models'
+      - './api:/api'
     ports:
       - 3001:8000
     environment:
@@ -18,29 +17,21 @@ services:
       USE_MLOCK: 1
     cap_add:
       - IPC_LOCK
-      - SYS_RESOURCE
-    command: '/bin/sh /cuda/run.sh'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+    command: '/bin/sh /api/run.sh'
 
   llama-gpt-ui:
     # TODO: Use this image instead of building from source after the next release
     # image: 'ghcr.io/getumbrel/llama-gpt-ui:latest'
     build:
-      context: ${APP_DATA_DIR}/ui
+      context: ./ui
       dockerfile: Dockerfile
     ports:
-      - 3745:3000
+      - 3000:3000
     restart: on-failure
     environment:
       - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
-      - 'OPENAI_API_HOST=http://llama-gpt-api-cuda-gguf:8000'
-      - 'DEFAULT_MODEL=/models/${MODEL_NAME:-code-llama-2-7b-chat.gguf}'
+      - 'OPENAI_API_HOST=http://llama-gpt-api:8000'
+      - 'DEFAULT_MODEL=/models/${MODEL_NAME:-llama-2-7b-chat.bin}'
       - 'NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT=${DEFAULT_SYSTEM_PROMPT:-"You are a helpful and friendly AI assistant. Respond very concisely."}'
-      - 'WAIT_HOSTS=llama-gpt-api-cuda-gguf:8000'
+      - 'WAIT_HOSTS=llama-gpt-api:8000'
       - 'WAIT_TIMEOUT=${WAIT_TIMEOUT:-3600}'

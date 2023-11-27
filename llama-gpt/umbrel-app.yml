@@ -30,7 +30,7 @@ website: https://umbrel.com
 dependencies: []
 repo: https://github.com/getumbrel/llama-gpt
 support: https://community.umbrel.com
-port: 1234
+port: 3745
 gallery:
   - 1.jpg
   - 2.jpg
