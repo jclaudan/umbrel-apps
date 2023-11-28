@@ -15,5 +15,6 @@ services:
     environment:
       - PULSE_SERVER=unix:/tmp/pulseaudio.socket
       - PULSE_COOKIE=/tmp/pulseaudio.cookie
-    user: "${UID}"
+    user: "root"
+    privileged: true
     command: --user-profiles /profiles --profile fr
