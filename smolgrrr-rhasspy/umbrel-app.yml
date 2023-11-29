@@ -20,7 +20,7 @@ website: https://rhasspy.readthedocs.io/en/latest/
 dependencies: []
 repo: https://github.com/rhasspy
 support: https://github.com/rhasspy/rhasspy/issues
-port: 12101
+port: 8123
 gallery:
   - https://rhasspy.readthedocs.io/en/latest/img/web-speech.png
   - https://rhasspy.readthedocs.io/en/latest/img/services.png
