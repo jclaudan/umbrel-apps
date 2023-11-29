@@ -1,57 +1,22 @@
-version: '3.0'
+version: "3.7"
+
 services:
   rhasspy:
-    image: rhasspy
-    build: ${APP_DATA_DIR}
-    ports:
-      - 12101:12101
-      - 12183:12183
+    image: "rhasspy/rhasspy"
+    container_name: rhasspy
+    restart: unless-stopped
     volumes:
-      - $HOME/.config/rhasspy/profiles:/profiles
-      - /run/user/${UID}/pulse:/var/run/pulse
-      - $HOME/.config/pulse:/home/pacat/.config/pulse
-      - /var/lib/dbus:/var/lib/dbus
-      - ${HOME}/.pulse:/home/pacat/.pulse
-      - /home/philtweir/Code/rasa-docker:/tmp/rasa-docker
-    user: "1000:1000"
-    privileged: true
-    command: ["--user-profiles", "/profiles", "--profile", "fr"]
+      - "$HOME/.config/rhasspy/profiles:/profiles"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/tmp/pulseaudio.socket:/tmp/pulseaudio.socket"
+      - "/tmp/pulseaudio.client.conf:/etc/pulse/client.conf"
     devices:
-      - /dev/snd:/dev/snd
-    links:
-      - marytts:marytts
-      - home-assistant:home-assistant
-    depends_on:
-      - marytts
-      - home-assistant
-
-  marytts:
-    image: sttsse/marytts
-    volumes:
-      -  ${APP_DATA_DIR}/maryhome:/home
+      - "/dev/snd:/dev/snd"
     ports:
-      - 59125:59125
-
-  home-assistant:
-    network_mode: host
-    privileged: true
-    ports:
-      - 8123:8123
-    volumes:
-      - /home/$USER/.home-assistant:/config
-      - /home/$USER/Code/rasa-docker/rhasspy/tts.py:/usr/src/homeassistant/homeassistant/components/marytts/tts.py
-      - /home/$USER/Code/rasa-docker/rhasspy/__init__.py:/usr/src/homeassistant/homeassistant/components/tts/__init__.py
-      - /dev:/dev
+      - "12101:12101"
     environment:
-      - TZ=Europe/Paris"
-    image: homeassistant/home-assistant:stable
-
-  hss-server:
-    volumes:
-      -  ${APP_DATA_DIR}/hss-server/config/skills:/home/user/.config/hss_server/skills
-      -  ${APP_DATA_DIR}/hss-server/config/config.ini:/home/user/.config/hss_server/config.ini
-    image: hss-server
-    links:
-      - rhasspy:rhasspy
-    depends_on:
-      - rhasspy
+      - PULSE_SERVER=unix:/tmp/pulseaudio.socket
+      - PULSE_COOKIE=/tmp/pulseaudio.cookie
+    user: "root"
+    privileged: true
+    command: --user-profiles /profiles --profile fr
