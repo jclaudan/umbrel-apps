@@ -2,7 +2,7 @@ version: '3.0'
 services:
   rhasspy:
     image: rhasspy
-    build: .
+    build: ${APP_DATA_DIR}
     ports:
       - 12101:12101
       - 12183:12183
