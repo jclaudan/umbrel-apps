@@ -41,6 +41,7 @@ services:
       - /home/$USER/.home-assistant:/config
       - /home/$USER/Code/rasa-docker/rhasspy/tts.py:/usr/src/homeassistant/homeassistant/components/marytts/tts.py
       - /home/$USER/Code/rasa-docker/rhasspy/__init__.py:/usr/src/homeassistant/homeassistant/components/tts/__init__.py
+      - /dev:/dev
     environment:
       - TZ=Europe/Paris"
     image: homeassistant/home-assistant:stable
