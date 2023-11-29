@@ -1,5 +1,9 @@
 version: '3.0'
 services:
+  app_proxy:
+    environment:
+      APP_HOST: homebox_web_1
+      APP_PORT: 7745
   rhasspy:
     image: rhasspy
     build: .
@@ -13,7 +17,7 @@ services:
       - /var/lib/dbus:/var/lib/dbus
       - ${HOME}/.pulse:/home/pacat/.pulse
       - /home/philtweir/Code/rasa-docker:/tmp/rasa-docker
-    user: "1001"
+    user: "1000:1000"
     privileged: true
     command: ["--user-profiles", "/profiles", "--profile", "fr"]
     devices:
@@ -28,7 +32,7 @@ services:
   marytts:
     image: sttsse/marytts
     volumes:
-      - ./maryhome:/home
+      -  ${APP_DATA_DIR}/maryhome:/home
     ports:
       - 59125:59125
 
@@ -45,8 +49,8 @@ services:
 
   hss-server:
     volumes:
-      - ./hss-server/config/skills:/home/user/.config/hss_server/skills
-      - ./hss-server/config/config.ini:/home/user/.config/hss_server/config.ini
+      -  ${APP_DATA_DIR}/hss-server/config/skills:/home/user/.config/hss_server/skills
+      -  ${APP_DATA_DIR}/hss-server/config/config.ini:/home/user/.config/hss_server/config.ini
     image: hss-server
     links:
       - rhasspy:rhasspy
