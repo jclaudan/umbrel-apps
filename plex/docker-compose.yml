@@ -17,7 +17,7 @@ services:
       - 8324:8324/tcp
       # Plex DLNA Server
       - 32469:32469/tcp 
-      - 1900:1900/udp
+      - 2900:1900/udp
       # Network discovery
       - 32410:32410/udp
       - 32412:32412/udp
