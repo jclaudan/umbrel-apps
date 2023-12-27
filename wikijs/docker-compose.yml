@@ -8,7 +8,7 @@ services:
       PROXY_AUTH_ADD: "false"
   
   server:
-    image: linuxserver/wikijs:2.5.294@sha256:e9f79a619fb0da03dc2e20d1543a02eb655f09a1a112c6998ebd584ada533d66
+    image: linuxserver/wikijs:2.5.300@sha256:e265e60b799302d7c953e52208e8e41488beabc03b0d1cc9cd8bdef96763d4cf
     restart: on-failure
     environment:
       - PUID=1000
