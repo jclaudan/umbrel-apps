@@ -1,17 +1,16 @@
 manifestVersion: 1
 id: it-tools
 category: utility
-name: IT Tools
+name: ITTools
 version: "latest"
 tagline: Useful tools for developers and IT professionals
 description: >-
   IT Tools offers a collection of handy online tools for developers and IT professionals, featuring functionalities that enhance productivity and efficiency in everyday tasks. This app includes a variety of tools designed to simplify and streamline various aspects of development and IT operations.
 
   The platform is built with user experience in mind, ensuring that all tools are easily accessible and functional. It's a self-hosted solution, perfect for homelabs, offering a range of features from development aids to IT operational tools.
-releaseNotes: >-
-  Latest release of IT Tools. Includes various tools for development and IT operations, with a focus on ease of use and efficiency.
 developer: Corentin Thomasset
 website: https://it-tools.tech
+dependencies: []
 repo: https://github.com/CorentinTh/it-tools
 support: [GitHub Issues URL]
 port: 3080
@@ -22,5 +21,8 @@ gallery:
 path: ""
 defaultUsername: ""
 defaultPassword: ""
+torOnly: false
+releaseNotes: >-
+  Latest release of IT Tools. Includes various tools for development and IT operations, with a focus on ease of use and efficiency.
 submitter: Corentin Thomasset
 submission: [Link to your pull request on Umbrel's repository]
