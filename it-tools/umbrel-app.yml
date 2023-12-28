@@ -12,8 +12,6 @@ releaseNotes: >-
   Latest release of IT Tools. Includes various tools for development and IT operations, with a focus on ease of use and efficiency.
 developer: Corentin Thomasset
 website: https://it-tools.tech
-dependencies:
-  - docker
 repo: https://github.com/CorentinTh/it-tools
 support: [GitHub Issues URL]
 port: 3080
